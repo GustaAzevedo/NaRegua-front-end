@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+
+  --light-yellow: #ffde45;
+  --yellow: #c19a01;
+  --dark-yellow: #c19a01;
+  --black: #000;
+  --white: #fffffa;
+  --gray: #363636;
+  --light-gray: #636363;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn-warning {
+  background-color: var(--light-yellow) !important;
+  border: none;
+  font-weight: 500;
+
+}
+
+.btn-warning:hover {
+  background-color: var(--dark-yellow) !important;
+  border: none;
+}
+
+.btn-warning-2 {
+  background-color: var(--white) !important;
+  border: solid 1px var(--dark-yellow);
+  color: #c19a01;
+  font-weight: 500;
+}
+
+.btn-warning-2:hover {
+  background-color: var(--light-yellow) !important;
+  border: none;
+}

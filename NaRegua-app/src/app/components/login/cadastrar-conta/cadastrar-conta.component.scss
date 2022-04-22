@@ -1,0 +1,32 @@
+.kard {
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.37);
+
+  img {
+    display: flex;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 14px 0 8px;
+  }
+
+  input {
+    border: 1px solid #363636;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  a {
+    font-size: 1.2rem;
+    color: var(--yellow);
+  }
+
+  a:hover {
+    color: var(--light-yellow);
+    transition: 1s;
+  }
+}
