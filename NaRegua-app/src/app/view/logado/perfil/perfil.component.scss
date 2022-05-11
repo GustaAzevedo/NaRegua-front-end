@@ -1,0 +1,36 @@
+.formulario-dados {
+  border: 1px solid var(--gray);
+  border-radius: 0.5rem;
+
+  .w-95 {
+    width: 95%;
+  }
+
+  .title {
+    margin: 1rem 0 0.2rem 0;
+    color: var(--yellow);
+  }
+
+  .linha {
+    background-color: var(--yellow);
+    height: 1px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1rem 0 0.2rem 0;
+  }
+
+  .img {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .borda {
+    border: 1px solid var(--gray);
+  }
+}

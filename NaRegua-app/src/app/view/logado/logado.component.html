@@ -1,1 +1,24 @@
-<p>logado works!</p>
+<main class="container-xxl bg-gray p-0 h-100">
+  <div class="row m-0">
+    <div class="col-3 col-xl-2 h-100 menu p-0">
+      <div class="row m-0 ">
+        <div class="col-12 p-0 header-menu">
+          <img src="https://via.placeholder.com/150" alt="">
+          <p>Barbearia de exemplo exem</p>
+        </div>
+
+        <div class="col-md-12 p-0 menu-links">
+          <a routerLink="dashboard">DASHBOARD</a>
+          <a routerLink="agenda">AGENDA</a>
+          <a routerLink="agendamento">AGENDAMENTOS</a>
+          <a routerLink="perfil">PERFIL</a>
+          <a routerLink="">SAIR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9 col-xl-10 h-100 p-5 bg-light">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>

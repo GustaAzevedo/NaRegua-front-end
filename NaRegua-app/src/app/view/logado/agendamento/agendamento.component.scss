@@ -1,0 +1,67 @@
+.agendamento {
+
+  p {
+    margin: 0;
+  }
+
+  .titlee {
+    color: var(--yellow);
+    font-size: 2.5rem !important;
+  }
+
+  .subtitle {
+    color: var(--yellow);
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .radio {
+    input {
+      margin: 0 0.5rem 0 0;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  .form-control {
+    display: inline;
+    max-width: 100%;
+  }
+
+  .active {
+    background-color: var(--light-yellow);
+  }
+
+
+  .tabela {
+    .tab-title {
+      p {
+        display: inline;
+        font-size: 1.1rem;
+        color: var(--yellow);
+        font-weight: 500;
+      }
+    }
+
+    .linha {
+      border: solid 1px var(--yellow);
+      border-radius: 0.5rem;
+      background-color: #fff;
+
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      button {
+        background: none;
+        border: none;
+      }
+    }
+
+  }
+
+}
