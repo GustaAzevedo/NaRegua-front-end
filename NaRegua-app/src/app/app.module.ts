@@ -15,6 +15,7 @@ import { AgendamentoComponent } from './view/logado/agendamento/agendamento.comp
 import { CadastrarComponent } from './view/logado/cadastrar/cadastrar.component';
 import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
+import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PerfilComponent } from './view/logado/perfil/perfil.component';
     CadastrarComponent,
     AgendaComponent,
     PerfilComponent,
+    CriaAgendaComponent,
   ],
   imports: [
     BrowserModule,
