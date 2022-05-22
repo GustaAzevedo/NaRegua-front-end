@@ -4,7 +4,7 @@
     <div class="col-12 py-md-4 px-md-3 ">
       <div class="row m-0 justify-content-between">
         <h2 class="titlee col-5">Agenda</h2>
-        <button class="col-2 btn btn-warning" routerLink="dashboard">Adicionar</button>
+        <button class="col-2 btn btn-warning" routerLink="dashboard" routerLinkActive="selected">Adicionar</button>
       </div>
     </div>
   </div>
@@ -13,15 +13,20 @@
     <div class="col-12 ">
       <div class="row m-0 tab-title ">
         <p class="col-4 ">Horário</p>
-        <p class="col-4 ">Cliente</p>
-        <p class="col-4 text-end">Cliente</p>
+        <p class="col-4 ">Dias da semana</p>
+        <p class="col-4 text-end">Ações</p>
       </div>
     </div>
     <div class="col-12">
       <!-- ng-for dados lista-->
-      <div class="row m-0 mt-3 linha active px-1 py-3">
-        <p class="col-4 table-title align-items-center">09:00 - 10:00</p>
-        <p class="col-6 table-title-2">Guilherme Cadastro</p>
+      <div class="row m-0 mt-3 linha active px-1 py-3" *ngFor="let h of horarios">
+        <p class="col-4 table-title align-items-center">{{h.hr_inicio}} - {{h.hr_fim}}</p>
+        <p class="col-6 table-title-2">
+          <span [ngClass]="{'text':!h.tg_domingo}">D</span><span [ngClass]="{'text':!h.tg_segunda}">S</span>
+          <span [ngClass]="{'text':!h.tg_terca}">T</span><span [ngClass]="{'text':!h.tg_quarta}">Q</span><span
+            [ngClass]="{'text':!h.tg_quinta}">Q</span><span [ngClass]="{'text':!h.tg_sexta}">S</span><span
+            [ngClass]="{'text':!h.tg_sabado}">S</span>
+        </p>
         <button class="col-2 table-title-2 text-end"><i class="fa-solid fa-ellipsis-vertical"></i></button>
       </div>
     </div>

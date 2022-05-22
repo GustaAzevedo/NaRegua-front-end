@@ -1,3 +1,5 @@
+import { Agendamento } from './../../../models/Agendamento';
+import { AgendamentoService } from './../../../services/agendamento-service.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agendamento.component.scss']
 })
 export class AgendamentoComponent implements OnInit {
+  agendamento: Agendamento[];
 
-  constructor() { }
+  constructor(private agendamentoService: AgendamentoService) { }
 
   ngOnInit(): void {
+    this.agendamentoService.listar().subscribe(agendamentos => {
+      this.agendamento = agendamentos;
+      console.log("Agendamento: " + this.agendamento[0].hr_inicio)
+    })
   }
 
 }

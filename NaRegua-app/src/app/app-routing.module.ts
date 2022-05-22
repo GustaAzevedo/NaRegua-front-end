@@ -18,6 +18,10 @@ const routes: Routes = [
     component: LoginComponent,
     children: [
       {
+        path: "",
+        component: LoginModalComponent
+      },
+      {
         path: "login",
         component: LoginModalComponent
       },
@@ -32,6 +36,10 @@ const routes: Routes = [
     path: "logado",
     component: LogadoComponent,
     children: [
+      {
+        path: "",
+        component: DashboardComponent
+      },
       {
         path: "dashboard",
         component: DashboardComponent

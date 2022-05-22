@@ -1,3 +1,5 @@
+import { Horario } from './../../../models/Horario';
+import { HorarioService } from './../../../services/horario.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agenda.component.scss']
 })
 export class AgendaComponent implements OnInit {
+  horarios: Horario[];
 
-  constructor() { }
+  constructor(private horarioService: HorarioService) { }
 
   ngOnInit(): void {
+    this.horarioService.listar().subscribe(horario => {
+      this.horarios = horario;
+      console.log("Agendamento: " + this.horarios[0].hr_inicio)
+    })
   }
 
 }

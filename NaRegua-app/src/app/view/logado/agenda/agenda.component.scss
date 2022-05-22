@@ -26,8 +26,18 @@
     background-color: var(--light-yellow);
   }
 
+  .text {
+    color: rgb(102, 102, 102) !important;
+  }
 
   .tabela {
+    span {
+      padding: 0 0.3rem 0 0;
+      font-weight: 700;
+    }
+
+
+
     .tab-title {
       p {
         display: inline;

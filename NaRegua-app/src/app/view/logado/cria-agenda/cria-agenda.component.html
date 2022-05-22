@@ -12,15 +12,19 @@
             <div class="col-12">
               <p class="subtitle">Horário</p>
             </div>
+
             <div class="col-2 pt-2">
-              <input type="text" class="form-control w-100" placeholder="07:00">
+              <input type="text" [(ngModel)]="horario.hr_inicio" name={{horario.hr_inicio}} class="form-control w-100"
+                placeholder="07:00">
             </div>
-            <div class="col-1">
+            <div class="col-1 pt-2">
               <p class="subtitle text-center">Até</p>
             </div>
-            <div class="col-2 ">
-              <input type="text" class="form-control w-100" placeholder="08:00">
+            <div class="col-2 pt-2">
+              <input type="text" [(ngModel)]="horario.hr_fim" name={{horario.hr_fim}} class="form-control w-100"
+                placeholder="08:00">
             </div>
+
           </div>
         </div>
 
@@ -32,31 +36,38 @@
             <div class="col-12 p-0 pt-4">
               <div class="row m-0 ">
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_domingo == 1"
+                    (change)="alteraDom(horario.tg_domingo)">
                   <label>Domingo</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_segunda == 1"
+                    (change)="alteraSeg(horario.tg_segunda)">
                   <label>Segunda</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_terca == 1"
+                    (change)="alteraTer(horario.tg_terca)">
                   <label>Terça</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_quarta == 1"
+                    (change)="alteraQua(horario.tg_quarta)">
                   <label>Quarta</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_quinta == 1"
+                    (change)="alteraQui(horario.tg_quinta)">
                   <label>Quinta</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_sexta == 1"
+                    (change)="alteraSex(horario.tg_sexta)">
                   <label>Sexta</label>
                 </div>
                 <div class="radio col-4">
-                  <input class="" type="checkbox" value="">
+                  <input class="" type="checkbox" value="" [checked]="horario.tg_sabado == 1"
+                    (change)="alteraSab(horario.tg_sabado)">
                   <label>Sábado</label>
                 </div>
               </div>
@@ -67,7 +78,7 @@
         <div class="col-6 p-0 pt-5">
           <div class="row m-0 justify-content-end">
             <button class="btn btn-warning-2 col-3 me-2">Cancelar</button>
-            <button class="btn btn-warning col-3">Salvar</button>
+            <button class="btn btn-warning col-3" (click)="salvar()">Salvar</button>
           </div>
         </div>
 
