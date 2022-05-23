@@ -17,15 +17,7 @@ export class AgendamentoService {
   constructor(private HTTP: HttpClient) { }
 
   listar(): Observable<Agendamento[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': '7|4KwHUCWMol9Bns8q9NzoJvgF0vRj6ZPGJ2OJciHz'
-      })
-    };
-
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'agendamentos', httpOptions).pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'agendamentos').pipe(
       map((obj) => obj)
     )
   }

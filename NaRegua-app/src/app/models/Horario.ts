@@ -11,7 +11,7 @@ export class Horario {
   tg_domingo?: number
   tg_inativo?: number
   barbearia_id?: number
-  created_at?: Date
-  updated_at?: Date
+  created_at?: String
+  updated_at?: String
 
 }

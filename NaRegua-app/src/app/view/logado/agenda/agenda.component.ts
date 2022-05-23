@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Horario } from './../../../models/Horario';
 import { HorarioService } from './../../../services/horario.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,13 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class AgendaComponent implements OnInit {
   horarios: Horario[];
 
-  constructor(private horarioService: HorarioService) { }
+  constructor(private horarioService: HorarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.horarioService.listar().subscribe(horario => {
       this.horarios = horario;
       console.log("Agendamento: " + this.horarios[0].hr_inicio)
     })
+  }
+
+  adicionar(): void {
+    this.router.navigate(['/logado/cria-agenda'])
   }
 
 }

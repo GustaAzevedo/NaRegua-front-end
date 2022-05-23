@@ -14,12 +14,12 @@
             <form class="row m-0">
               <div class="col-12">
                 <label class="form-label">Login</label>
-                <input class="form-control" type="text">
+                <input class="form-control" type="text" [(ngModel)]="email" name="email">
               </div>
 
               <div class="col-12">
                 <label class="form-label">senha</label>
-                <input class="form-control" type="password">
+                <input class="form-control" type="password" [(ngModel)]="senha" name="senha">
               </div>
 
               <div class="col-12 pt-4">
@@ -28,7 +28,7 @@
                     <a href="#" class="">Registre-se</a>
                   </div>
                   <div class="col-4 p-0">
-                    <button class=" w-100 btn btn-warning">Entrar</button>
+                    <button class=" w-100 btn btn-warning" (click)="logar()">Entrar</button>
                   </div>
                 </div>
               </div>

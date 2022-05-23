@@ -1,11 +1,16 @@
+import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
+//  Materia
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DatePipe } from '@angular/common'
 
 //views
 import { LoginComponent } from './view/login/login.component';
@@ -18,6 +23,7 @@ import { CadastrarComponent } from './view/logado/cadastrar/cadastrar.component'
 import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,10 +43,19 @@ import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
-
+    DatePipe,
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    },
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
 })

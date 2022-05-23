@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HorarioService } from './../../../services/horario.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-cria-agenda',
@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./cria-agenda.component.scss']
 })
 export class CriaAgendaComponent implements OnInit {
+  data = new Date();
   horarios: Horario[];
   horario: Horario = {
     hr_fim: '',
@@ -24,18 +25,22 @@ export class CriaAgendaComponent implements OnInit {
     tg_sabado: 0,
     tg_inativo: 0,
     barbearia_id: 1,
-
+    updated_at: null,
+    created_at: null
   };
   bacon = 'oi';
-  constructor(private horarioService: HorarioService, private router: Router) { }
+  constructor(private horarioService: HorarioService, private router: Router, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
 
   }
 
   salvar(): void {
+    this.horario.updated_at = Date.now().toString();
+    this.horario.created_at = Date.now().toString();
     this.horarioService.create(this.horario).subscribe(() => {
-      this.router.navigate(['/agenda'])
+      this.horarioService.showMessage('Produto criado');
+      this.router.navigate(['/logado/agenda'])
     })
   }
 
@@ -107,6 +112,9 @@ export class CriaAgendaComponent implements OnInit {
       this.horario.tg_sabado = 0
     }
     return n
+  }
+  voltar(): void {
+    this.router.navigate(['/logado/agenda'])
   }
 
 }

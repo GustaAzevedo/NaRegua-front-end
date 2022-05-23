@@ -1,8 +1,10 @@
-import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { map, catchError } from 'rxjs/operators';
+import { FormGroup } from '@angular/forms';
 
 const apiUrlInfoGES = environment.apiUrl;
 
@@ -10,23 +12,37 @@ const apiUrlInfoGES = environment.apiUrl;
   providedIn: 'root'
 })
 export class AuthService {
+  public token: string;
 
-  private usuarioAutenticado: boolean = false;
-  localhttp: HttpClient;
-
-  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
-    this.localhttp = httpClient;
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
   }
 
-  auth(ticket: string): Observable<any> {
+  login(user: any): Observable<any> {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      })
-    };
-    return this.httpClient.get(apiUrlInfoGES + 'auth/' + ticket, httpOptions);
+    console.log('entrei no login: ' + user.email + ' - ' + user.password + ' - ' + user.device)
+
+    return this.http.post<any>(apiUrlInfoGES + 'login', user)
+      .pipe(
+        map(user => {
+          // login bem-sucedido se houver um token jwt na resposta
+          if (user && user.token) {
+            // armazenar detalhes do usuário e token jwt no localStorage para manter o usuário logado entre as atualizações da página
+            console.log('Recebeu token')
+            localStorage.setItem('currentUser', JSON.stringify(user));
+          } else {
+            console.log('não recebeu token')
+          }
+          return user;
+        })
+      );
+  }
+
+  logout(): void {
+    // Limpa o token removendo o usuário do local store para efetuar o logout
+    this.token = null;
+    localStorage.removeItem('currentUser');
   }
 
 }

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Horario } from './../models/Horario';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-//import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { EMPTY, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 
@@ -14,8 +14,8 @@ const apiUrlInfoGES = environment.apiUrl;
 })
 export class HorarioService {
 
-  constructor(private HTTP: HttpClient/*, private snackkBar: MatSnackBar*/) { }
-  /*
+  constructor(private snackkBar: MatSnackBar, private HTTP: HttpClient) { }
+
   showMessage(msg: string, isError: boolean = false): void {
     this.snackkBar.open(msg, 'X', {
       duration: 5000,
@@ -29,7 +29,7 @@ export class HorarioService {
     this.showMessage('Ocorreu um Erro!', true)
     return EMPTY
   }
-  */
+
 
   listar(): Observable<Horario[]> {
     const httpOptions = {
@@ -47,8 +47,16 @@ export class HorarioService {
 
   create(horario: Horario): Observable<Horario> {
 
-    return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario).pipe(
-      //catchError((e) => this.errorHandler(e)),
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': '7|4KwHUCWMol9Bns8q9NzoJvgF0vRj6ZPGJ2OJciHz'
+      })
+    };
+
+    return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario, httpOptions).pipe(
+      catchError((e) => this.errorHandler(e)),
       map((obj) => obj),
     );
   }
