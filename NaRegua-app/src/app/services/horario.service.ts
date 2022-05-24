@@ -24,7 +24,6 @@ const httpOptions = {
 })
 export class HorarioService {
 
-
   constructor(private snackkBar: MatSnackBar, private HTTP: HttpClient) { }
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -41,7 +40,6 @@ export class HorarioService {
     return EMPTY
   }
 
-
   listar(): Observable<Horario[]> {
     return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'horario').pipe(
       map((obj) => obj)
@@ -51,6 +49,14 @@ export class HorarioService {
   create(horario: Horario): Observable<Horario> {
     console.log(httpOptions)
     return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario, httpOptions).pipe(
+      catchError((e) => this.errorHandler(e)),
+      map((obj) => obj),
+    );
+  }
+
+  update(horario: Horario): Observable<Horario> {
+    let url = `${apiUrlInfoGES}horario/${horario.id}`;
+    return this.HTTP.put<Horario>(url, horario, httpOptions).pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj),
     );

@@ -21,17 +21,11 @@ export class AgendaComponent implements OnInit {
   }
 
   adicionar(): void {
-    if (this.criarAlterar) {
-
-    } else {
-      this.router.navigate(['/logado/cria-agenda'])
-    }
+    this.router.navigate(['/logado/cria-agenda'])
   }
 
   editar(h: Horario) {
-    this.router.navigateByUrl('/logado/cria-agenda', {
-      state: { h: Horario }
-    })
+    this.router.navigate(['/logado/cria-agenda', h])
   }
 
   excluir(h: Horario) {
@@ -41,7 +35,6 @@ export class AgendaComponent implements OnInit {
         this.ngOnInit()
       }, 1000)
     });
-
   }
 
 }

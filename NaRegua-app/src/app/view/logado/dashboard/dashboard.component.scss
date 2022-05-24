@@ -28,6 +28,12 @@
     }
   }
 
+  .kard-p {
+    height: 300px;
+    min-width: 500px;
+  }
+
+
   .kard-principal {
     .next {
       color: var(--black);
@@ -50,8 +56,8 @@
       text-transform: capitalize;
     }
 
-    .number {
-      font-size: 3rem;
+    .name {
+      font-size: 2.5rem;
       font-weight: 600;
       padding: 0.5rem 0;
     }

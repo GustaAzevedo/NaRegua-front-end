@@ -1,5 +1,5 @@
 import { Horario } from './../../../models/Horario';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HorarioService } from './../../../services/horario.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -28,9 +28,24 @@ export class CriaAgendaComponent implements OnInit {
     updated_at: null,
     created_at: null
   };
-  bacon = 'oi';
+  horario2: Horario = {
+    hr_fim: '',
+    hr_inicio: '',
+    tg_domingo: 0,
+    tg_segunda: 0,
+    tg_terca: 0,
+    tg_quarta: 0,
+    tg_quinta: 0,
+    tg_sexta: 0,
+    tg_sabado: 0,
+    tg_inativo: 0,
+    barbearia_id: 1,
+    updated_at: null,
+    created_at: null
+  };
+  alteraOuCria: boolean = false;
 
-  constructor(private horarioService: HorarioService, private router: Router, public datepipe: DatePipe) {
+  constructor(private horarioService: HorarioService, private router: Router, private route: ActivatedRoute, public datepipe: DatePipe) {
     const h = this.router.getCurrentNavigation();
     //this.horario = h.extras.state.Horario;
     //console.log(this.horario)
@@ -38,15 +53,35 @@ export class CriaAgendaComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.route.params.subscribe(params => {
+      this.horario2 = params;
+      console.log("criado: " + this.horario2.created_at)
+      if (this.horario2.id != null) {
+        this.alteraOuCria = true;
+      }
+    })
+
   }
 
-  salvar(): void {
-    this.horario.updated_at = Date.now().toString();
-    this.horario.created_at = Date.now().toString();
-    this.horarioService.create(this.horario).subscribe(() => {
-      this.horarioService.showMessage('Agenda criado');
-      this.router.navigate(['/logado/agenda'])
-    })
+  cria(): void {
+    if (this.alteraOuCria == false) {
+      this.horario.updated_at = Date.now().toString();
+      this.horario.created_at = Date.now().toString();
+      this.horarioService.create(this.horario).subscribe(() => {
+        this.horarioService.showMessage('Agenda criado');
+        this.router.navigate(['/logado/agenda'])
+      })
+    }
+    else {
+      this.horarioService.update(this.horario2).subscribe(() => {
+        this.horarioService.showMessage('Agenda salvo');
+        this.router.navigate(['/logado/agenda'])
+      })
+    }
+  }
+
+  edita(): void {
+
   }
 
   alteraDom(n: Number): Number {
