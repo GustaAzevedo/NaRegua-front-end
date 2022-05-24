@@ -1,6 +1,4 @@
 .formulario-dados {
-  border: 1px solid var(--gray);
-  border-radius: 0.5rem;
 
   .w-95 {
     width: 95%;
@@ -9,6 +7,8 @@
   .title {
     margin: 1rem 0 0.2rem 0;
     color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 500;
   }
 
   .linha {
@@ -33,4 +33,11 @@
   .borda {
     border: 1px solid var(--gray);
   }
+}
+
+.titlee {
+  color: var(--yellow);
+  font-size: 2.5rem !important;
+  display: inline;
+  text-transform: uppercase ;
 }

@@ -108,8 +108,8 @@ $NaRegua-app-theme: mat-light-theme((
 }
 
 .btn-warning-2:hover {
-  background-color: var(--light-yellow) !important;
-  border: none;
+  border: solid 1px var(--light-yellow) !important;
+  color:  var(--light-yellow);
 }
 
 html, body { height: 100%; }
