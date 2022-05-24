@@ -16,6 +16,11 @@
     font-weight: 600;
   }
 
+  .color:hover {
+    color: var(--yellow) !important;
+    font-size: 2rem;
+  }
+
   p {
     margin: 0;
   }
@@ -58,6 +63,12 @@
 
     .name {
       font-size: 2.5rem;
+      font-weight: 600;
+      padding: 0.5rem 0;
+    }
+
+    .number {
+      font-size: 3rem;
       font-weight: 600;
       padding: 0.5rem 0;
     }
