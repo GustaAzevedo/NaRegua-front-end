@@ -27,7 +27,16 @@
             [ngClass]="{'text':!h.tg_quinta}">Q</span><span [ngClass]="{'text':!h.tg_sexta}">S</span><span
             [ngClass]="{'text':!h.tg_sabado}">S</span>
         </p>
-        <button class="col-2 table-title-2 text-end"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        <div class="col-2">
+          <div class="row m-0">
+
+            <button class="col-6 table-title-2 text-end"><i class="fa-solid fa-trash" (click)="excluir(h)"></i></button>
+            <button class="col-6 table-title-2 text-end"><i class="fa-solid fa-ellipsis-vertical"
+                (click)="editar(h)"></i></button>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

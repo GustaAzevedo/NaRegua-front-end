@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendaComponent implements OnInit {
   horarios: Horario[];
-
+  criarAlterar: boolean = false;
   constructor(private horarioService: HorarioService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,7 +21,27 @@ export class AgendaComponent implements OnInit {
   }
 
   adicionar(): void {
-    this.router.navigate(['/logado/cria-agenda'])
+    if (this.criarAlterar) {
+
+    } else {
+      this.router.navigate(['/logado/cria-agenda'])
+    }
+  }
+
+  editar(h: Horario) {
+    this.router.navigateByUrl('/logado/cria-agenda', {
+      state: { h: Horario }
+    })
+  }
+
+  excluir(h: Horario) {
+    this.horarioService.deleteHorario(h).subscribe(() => {
+      this.horarioService.showMessage('Agenda Excluída');
+      setTimeout(() => {
+        this.ngOnInit()
+      }, 1000)
+    });
+
   }
 
 }

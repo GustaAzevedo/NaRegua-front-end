@@ -29,7 +29,12 @@ export class CriaAgendaComponent implements OnInit {
     created_at: null
   };
   bacon = 'oi';
-  constructor(private horarioService: HorarioService, private router: Router, public datepipe: DatePipe) { }
+
+  constructor(private horarioService: HorarioService, private router: Router, public datepipe: DatePipe) {
+    const h = this.router.getCurrentNavigation();
+    //this.horario = h.extras.state.Horario;
+    //console.log(this.horario)
+  }
 
   ngOnInit(): void {
 
@@ -39,7 +44,7 @@ export class CriaAgendaComponent implements OnInit {
     this.horario.updated_at = Date.now().toString();
     this.horario.created_at = Date.now().toString();
     this.horarioService.create(this.horario).subscribe(() => {
-      this.horarioService.showMessage('Produto criado');
+      this.horarioService.showMessage('Agenda criado');
       this.router.navigate(['/logado/agenda'])
     })
   }

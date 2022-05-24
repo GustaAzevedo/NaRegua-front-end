@@ -9,17 +9,28 @@ import { FormGroup } from '@angular/forms';
 
 const apiUrlInfoGES = environment.apiUrl;
 
+var tk: String = '19|GFAtxh0ZXo1CEc7z4XFMbcZkU0R6QOrgmJB7aJ1V';
+var headers_object = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Authorization': "Bearer " + tk
+});
+
+const httpOptions = {
+  headers: headers_object
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class HorarioService {
+
 
   constructor(private snackkBar: MatSnackBar, private HTTP: HttpClient) { }
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackkBar.open(msg, 'X', {
       duration: 5000,
-      horizontalPosition: "right",
+      horizontalPosition: "center",
       verticalPosition: "top",
       panelClass: isError ? ['msg-error'] : ['msg-success']
     })
@@ -32,30 +43,23 @@ export class HorarioService {
 
 
   listar(): Observable<Horario[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': '7|4KwHUCWMol9Bns8q9NzoJvgF0vRj6ZPGJ2OJciHz'
-      })
-    };
-
-    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'horario', httpOptions).pipe(
+    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'horario').pipe(
       map((obj) => obj)
     )
   }
 
   create(horario: Horario): Observable<Horario> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': '7|4KwHUCWMol9Bns8q9NzoJvgF0vRj6ZPGJ2OJciHz'
-      })
-    };
-
+    console.log(httpOptions)
     return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario, httpOptions).pipe(
+      catchError((e) => this.errorHandler(e)),
+      map((obj) => obj),
+    );
+  }
+
+  deleteHorario(h: Horario): Observable<any> {
+    let url = `${apiUrlInfoGES}horario/${h.id}`;
+    console.log(url)
+    return this.HTTP.delete<any>(url, httpOptions).pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj),
     );
