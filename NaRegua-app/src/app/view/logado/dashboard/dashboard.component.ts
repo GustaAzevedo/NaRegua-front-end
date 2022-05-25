@@ -15,42 +15,59 @@ export class DashboardComponent implements OnInit {
   agePendentes: Agendamento[];
   ageDiario: Agendamento[];
   ageMensal: Agendamento[];
-  ageProx: Agendamento[];
+
 
   qtdPendentes: Number;
   qtdDiarios: Number;
+  qtdMes: Number;
 
   data: Date = new Date();
-  dia = this.data.getDay().toString();
-  mes = this.data.getMonth().toString();
+  dia = this.data.getDate().toString();
+  mes = (this.data.getMonth() + 1).toString();
   ano = this.data.getFullYear().toString();
+  dataString: String;
 
 
 
 
 
-  dataString = this.ano + '-' + this.mes + '-' + this.dia;
 
   trataDia(): void{
 
-    if(this.dia)
+    if(parseInt(this.dia) < 10){
+      this.dia = '0' + this.dia;
+    }
+
+    if(parseInt(this.mes) < 10){
+      this.mes = '0' + this.mes;
+    }
+
+    this.dataString = this.ano + '-' + this.mes + '-' + this.dia;
+
   }
 
 
   ngOnInit(): void {
 
+    this.trataDia();
+
     this.agendamentoService.listarPendetes().subscribe(agendamento => {
       this.agePendentes = agendamento;
-      console.log("Agendamento: " + this.agePendentes[0].hr_inicio);
       this.qtdPendentes = this.agePendentes.length;
     }
-    )
+    );
 
     this.agendamentoService.listarDiarios(this.dataString).subscribe(agendamento => {
       this.ageDiario = agendamento;
       this.qtdDiarios = this.ageDiario.length;
     }
-    )
+    );
+
+    this.agendamentoService.listaMensal().subscribe(agendamento => {
+      this.ageMensal = agendamento;
+      this.qtdMes = this.ageMensal.length;
+    }
+    );
 
    }
   }

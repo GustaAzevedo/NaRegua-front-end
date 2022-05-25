@@ -34,6 +34,12 @@ export class AgendamentoService {
     )
   }
 
+  listaMensal(): Observable<Agendamento[]> {
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos?mes=1').pipe(
+      map((obj) => obj)
+    )
+  }
+
   listarDaBarb(): Observable<Agendamento[]> {
     return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos').pipe(
       map((obj) => obj)
