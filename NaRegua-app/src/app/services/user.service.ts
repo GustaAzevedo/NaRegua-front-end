@@ -1,6 +1,6 @@
+import { User } from './../models/User';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Horario } from './../models/Horario';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -22,7 +22,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class HorarioService {
+export class UserService {
 
   constructor(private snackkBar: MatSnackBar, private HTTP: HttpClient) { }
 
@@ -40,35 +40,11 @@ export class HorarioService {
     return EMPTY
   }
 
-  listar(): Observable<Horario[]> {
-    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'horario').pipe(
-      catchError((e) => this.errorHandler(e)),
-      map((obj) => obj)
-    )
-  }
-
-  create(horario: Horario): Observable<Horario> {
+  create(user: User): Observable<User> {
     console.log(httpOptions)
-    return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario, httpOptions).pipe(
-
+    return this.HTTP.post<User>(apiUrlInfoGES + 'user', user).pipe(
       map((obj) => obj),
     );
   }
 
-  update(horario: Horario): Observable<Horario> {
-    let url = `${apiUrlInfoGES}horario/${horario.id}`;
-    return this.HTTP.put<Horario>(url, horario, httpOptions).pipe(
-      catchError((e) => this.errorHandler(e)),
-      map((obj) => obj),
-    );
-  }
-
-  deleteHorario(h: Horario): Observable<any> {
-    let url = `${apiUrlInfoGES}horario/${h.id}`;
-    console.log(url)
-    return this.HTTP.delete<any>(url, httpOptions).pipe(
-      catchError((e) => this.errorHandler(e)),
-      map((obj) => obj),
-    );
-  }
 }

@@ -7,12 +7,12 @@
 
           <div class="col-12">
             <label class="form-label">E-mail*</label>
-            <input class="form-control" type="email">
+            <input class="form-control" type="email" [(ngModel)]="user.email" name={{user.email}}>
           </div>
 
           <div class="col-12">
             <label class="form-label">Senha</label>
-            <input class="form-control" type="password">
+            <input class="form-control" type="password" [(ngModel)]="password" name={{password}}>
           </div>
 
           <div class="col-12">
@@ -24,7 +24,7 @@
             <div class="row m-0 justify-content-between">
               <div class="col-0 col-md-5"></div>
               <div class="col-6 col-md-3 p-0">
-                <button class=" w-100 btn btn-warning-2">Cancelar</button>
+                <button class=" w-100 btn btn-warning-2" routerLink="../">Cancelar</button>
               </div>
               <div class="col-6 col-md-3 p-0">
                 <button class=" w-100 btn btn-warning">Cadastrar</button>

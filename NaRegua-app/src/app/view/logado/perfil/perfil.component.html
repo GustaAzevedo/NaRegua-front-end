@@ -9,7 +9,8 @@
       <div class="w-100 linha"></div>
       <div class="col-7">
         <p class="">Razão Social/Nome do Dono*</p>
-        <input class="w-100 form-control" type="text" placeholder="">
+        <input class="w-100 form-control" type="text" placeholder="" name={{barbearia.ds_razao}}
+          [(ngModel)]="barbearia.ds_razao">
       </div>
       <div class="col-5">
         <p class="">Nome Barbearia*</p>
@@ -101,8 +102,8 @@
       </div>
       <div class="col-12 p-0">
         <div class="row m-0 text-end justify-content-md-end">
-          <button class="col-2 btn me-2  btn-warning-2">Cancelar</button>
-          <button class="col-2 btn btn-warning">Cadastrar</button>
+          <button class="col-2 btn me-2  btn-warning-2" routerLink="../dashboard">Cancelar</button>
+          <button class="col-2 btn btn-warning">Salvar</button>
         </div>
       </div>
     </div>
