@@ -1,6 +1,6 @@
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,12 @@ import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Parte para identificar local
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -55,7 +61,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: AuthTokenInterceptor,
       multi: true
     },
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { provide: LOCALE_ID, useValue: 'pt' },
+    {
+      provide:  DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL'
+    },
   ],
   bootstrap: [AppComponent]
 })

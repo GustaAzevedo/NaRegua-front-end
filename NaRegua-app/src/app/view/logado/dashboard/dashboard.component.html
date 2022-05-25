@@ -3,102 +3,82 @@
     <h2 class="titlee">DASHBOARD</h2>
   </div>
   <div class="col-12 p-0 px-md-3 text-end">
-    <p class="atualization">Atualizado em 27/03/2020 10:00</p>
+    <p class="atualization">Atualizado em  {{ data | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
   </div>
-  <div class="col-12 p-0 px-md-3 py-4 pb-5">
+  <div class="col-12 p-0 px-md-3 py-4 pb-3">
     <p class="subtitle">Próximos agendamentos do dia</p>
   </div>
 
-  <div class="col-12 p-0 px-md-3 carrossel pb-5">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-inner d-flex justify-content-around p-1">
-
-        <div class="carousel-item active">
-          <div class="row m-0">
-            <div class="col-6 kard p-0 ">
-              <div class="row h-100 m-0">
-                <div class="col-12 text-center py-4">
-                  <p class="title">27/02/2022 15:00</p>
-                </div>
-                <div class="col-12 te xt-center py-4">
-                  <p class="name text-center">Gustavo de Azevedo</p>
-                </div>
+  <div class="row mb-2">
+    <div class="col-sm-6">
+        <div class="card" style=" height: 12rem;">
+            <div class="card-body">
+              <div class="col-12 text-center">
+                <h3 class="card-title title-principal h5 mt-5">SÁB, 27/02 às 16:00</h3>
+              </div>
+              <div class="col-12 text-center py-1">
+                <h3 class="card-title nome-card h5">Gustavo Azevedo</h3>
               </div>
             </div>
-          </div>
         </div>
-        <div class="carousel-item">
-          <div class="row m-0">
-            <div class="col-6 kard p-0">
-              <div class="row m-0">
-                <div class="col-12 text-center  py-4">
-                  <p class="title">27/02/2022 15:00</p>
-                </div>
-                <div class="col-12 text-center  py-4">
-                  <p class="name text-center">Guilherme Castro</p>
-                </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card" style=" height: 12rem;">
+            <div class="card-body">
+              <div class="col-12 text-center">
+                <h3 class="card-title title-principal h5 mt-5">SÁB, 27/02 às 16:00</h3>
+              </div>
+              <div class="col-12 text-center py-1">
+                <h3 class="card-title nome-card h5">Guilherme Castro</h3>
               </div>
             </div>
-          </div>
         </div>
-      </div>
-
-      <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon previous " aria-hidden="true"></span>
-        <span class="visually-hidden previous ">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon next " aria-hidden="true"></span>
-        <span class="visually-hidden next">Next</span>
-      </button>
     </div>
-  </div>
+</div>
 
-  <div class="col-12 p-0 pt-5">
-    <div class="row justify-content-around m-0 kards">
-
-      <div class="col-3 kard p-0">
-        <div class="row m-0 py-1">
-          <div class="col-12 text-center">
-            <p class="title">Agendamentos Pendentes</p>
-          </div>
-          <div class="col-12 text-center py-1">
-            <p class="number">2</p>
-          </div>
-          <div class="col-12 text-center py-1">
-            <button class="btn btn-warning">Verificar</button>
-          </div>
+  <div class="row mb-2">
+      <div class="col-4">
+            <div class="card" style="height: 10rem;">
+                <div class="card-body">
+                    <div class="col-12 text-center">
+                      <p class="title">Agendamentos Pendentes</p>
+                    </div>
+                    <div class="col-12 text-center py-1">
+                      <p class="card-subtitle number mt-4">2</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-3 kard p-0">
-        <div class="row m-0">
-          <div class="col-12 text-center py-1">
-            <p class="title">Agendamentos pendentes</p>
-          </div>
-          <div class="col-12 text-center py-1">
-            <p class="number">2</p>
-          </div>
-          <div class="col-12 text-center py-1">
-            <p class="data">27/02/2022</p>
-          </div>
+        <div class="col-4">
+            <div class="card" style="height: 10rem;">
+                <div class="card-body">
+                  <div class="col-12 text-center py-1">
+                    <p class="title">Agendamentos diario</p>
+                  </div>
+                  <div class="col-12 text-center py-1">
+                    <p class="number  mt-4">2</p>
+                  </div>
+                  <div class="col-12 text-center py-1">
+                    <p class="data  mt-3">27/02/2022</p>
+                  </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-3 kard p-0">
-        <div class="row m-0">
-          <div class="col-12 text-center py-1">
-            <p class="title">Agendamentos pendentes</p>
-          </div>
-          <div class="col-12 text-center py-1">
-            <p class="number">8</p>
-          </div>
-          <div class="col-12">
-            <p class="data text-center py-1">Ref: 27/02 à 05/03</p>
-          </div>
+        <div class="col-4">
+            <div class="card" style="height: 10rem;">
+                <div class="card-body">
+                  <div class="col-12 text-center py-1">
+                    <p class="title">Agendamentos mensal</p>
+                  </div>
+                  <div class="col-12 text-center py-1">
+                    <p class="number mt-4">8</p>
+                  </div>
+                  <div class="col-12">
+                    <p class="data text-center py-1 mt-3">Ref: 01/2022 </p>
+                  </div>
+                </div>
+            </div>
         </div>
-      </div>
-
     </div>
-  </div>
+
 </div>

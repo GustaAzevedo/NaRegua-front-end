@@ -14,14 +14,14 @@
             </div>
 
             <div class="col-2 pt-2">
-              <input type="text" [(ngModel)]="horario.hr_inicio" name={{horario.hr_inicio}} class="form-control w-100"
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_inicio" name={{horario.hr_inicio}} class="form-control w-100"
                 placeholder="07:00">
             </div>
             <div class="col-1 pt-2">
               <p class="subtitle text-center">Até</p>
             </div>
             <div class="col-2 pt-2">
-              <input type="text" [(ngModel)]="horario.hr_fim" name={{horario.hr_fim}} class="form-control w-100"
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_fim" name={{horario.hr_fim}} class="form-control w-100"
                 placeholder="08:00">
             </div>
 
@@ -82,14 +82,14 @@
             </div>
 
             <div class="col-2 pt-2">
-              <input type="text" [(ngModel)]="horario2.hr_inicio" name={{horario2.hr_inicio}} class="form-control w-100"
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_inicio" name={{horario2.hr_inicio}} class="form-control w-100"
                 placeholder="07:00">
             </div>
             <div class="col-1 pt-2">
               <p class="subtitle text-center">Até</p>
             </div>
             <div class="col-2 pt-2">
-              <input type="text" [(ngModel)]="horario2.hr_fim" name={{horario2.hr_fim}} class="form-control w-100"
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_fim" name={{horario2.hr_fim}} class="form-control w-100"
                 placeholder="08:00">
             </div>
 

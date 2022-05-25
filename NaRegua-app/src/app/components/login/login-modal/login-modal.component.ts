@@ -15,7 +15,7 @@ export class LoginModalComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) { }
 
-
+  img = 'asse'
   email: string = '';
   senha: string = '';
   device: string = 'cel1';

@@ -9,7 +9,7 @@
   }
 
   label {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin: 0;
     padding: 14px 0 8px;
@@ -17,17 +17,21 @@
 
   input {
     border: 1px solid #363636;
-    height: 3rem;
-    font-size: 1.5rem;
+    height: 2.3rem;
+    font-size: 1.1rem;
   }
 
   a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--yellow);
   }
 
   a:hover {
     color: var(--light-yellow);
     transition: 1s;
+  }
+
+  .img{
+    height: 150px;
   }
 }

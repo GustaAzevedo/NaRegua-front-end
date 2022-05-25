@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,12 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  data: Date = new Date();
+
+
+
   ngOnInit(): void {
+    
   }
 
 }
