@@ -22,4 +22,16 @@ export class AgendamentoService {
     )
   }
 
+  listarPendetes(): Observable<Agendamento[]> {
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos/tg_confirmado=0').pipe(
+      map((obj) => obj)
+    )
+  }
+
+  listarDaBarb(): Observable<Agendamento[]> {
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos').pipe(
+      map((obj) => obj)
+    )
+  }
+
 }
