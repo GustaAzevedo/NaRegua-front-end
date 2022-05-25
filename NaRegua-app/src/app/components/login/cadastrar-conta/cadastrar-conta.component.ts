@@ -1,3 +1,4 @@
+import { User } from './../../../models/User';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastrar-conta.component.scss']
 })
 export class CadastrarContaComponent implements OnInit {
+  password: String;
+  user: User = {
+    name: ''
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  criarCt(): void {
+    console.log(this.user.email + ' - ' + this.user.name + ' - ')
   }
 
 }
