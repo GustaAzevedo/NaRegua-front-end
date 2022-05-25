@@ -6,7 +6,7 @@
     <p class="atualization">Atualizado em  {{ data | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
   </div>
   <div class="col-12 p-0 px-md-3 py-4 pb-3">
-    <p class="subtitle">Próximos agendamentos do dia</p>
+    <p class="subtitle">Próximos agendamentos</p>
   </div>
 
   <div class="row mb-2">
@@ -44,7 +44,7 @@
                       <p class="title">Agendamentos Pendentes</p>
                     </div>
                     <div class="col-12 text-center py-1">
-                      <p class="card-subtitle number mt-4">2</p>
+                      <p class="card-subtitle number mt-4">{{ qtdPendentes }}</p>
                     </div>
                 </div>
             </div>
@@ -56,10 +56,10 @@
                     <p class="title">Agendamentos diario</p>
                   </div>
                   <div class="col-12 text-center py-1">
-                    <p class="number  mt-4">2</p>
+                    <p class="number  mt-4">{{ qtdDiarios }}</p>
                   </div>
                   <div class="col-12 text-center py-1">
-                    <p class="data  mt-3">27/02/2022</p>
+                    <p class="data  mt-3">{{ data | date: 'dd/MM/yyyy' }}</p>
                   </div>
                 </div>
             </div>
@@ -71,10 +71,10 @@
                     <p class="title">Agendamentos mensal</p>
                   </div>
                   <div class="col-12 text-center py-1">
-                    <p class="number mt-4">8</p>
+                    <p class="number mt-4">{{ dataString }}</p>
                   </div>
                   <div class="col-12">
-                    <p class="data text-center py-1 mt-3">Ref: 01/2022 </p>
+                    <p class="data text-center py-1 mt-3">Ref: {{ data | date: 'MM/yyyy' }} </p>
                   </div>
                 </div>
             </div>
