@@ -13,18 +13,28 @@ export class AgendamentoComponent implements OnInit {
 
   data: Date = new Date();
   diaSemana: String;
-
+  data2: Date;
   constructor(private agendamentoService: AgendamentoService) { }
 
-  retornaDia(): void{
+  ngOnInit(): void {
+    this.retornaDia();
+    this.agendamentoService.listar().subscribe(agendamentos => {
+      this.agendamento = agendamentos;
+      console.log("Agendamento: " + this.agendamento[0].hr_inicio)
+    })
+  }
 
-    switch(this.data.getDay()){
+  retornaDia(): void {
+    //console.log('Entrou' + this.data.toString())
+    this.data = new Date(this.data)
+
+    switch (this.data.getDay()) {
       case 1:
         this.diaSemana = 'Segunda';
         break;
       case 2:
-          this.diaSemana = 'Terça';
-          break;
+        this.diaSemana = 'Terça';
+        break;
       case 3:
         this.diaSemana = 'Quarta';
         break;
@@ -40,20 +50,7 @@ export class AgendamentoComponent implements OnInit {
       case 7:
         this.diaSemana = 'Domingo';
         break;
-
     }
-
-  
-
-  }
-
-
-  ngOnInit(): void {
-    this.retornaDia();
-    this.agendamentoService.listar().subscribe(agendamentos => {
-      this.agendamento = agendamentos;
-      console.log("Agendamento: " + this.agendamento[0].hr_inicio)
-    })
   }
 
 }
