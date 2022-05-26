@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-  id: Number = 1;
+  barbeariaId: any = 1;
   img: string = 'https://via.placeholder.com/500x1400';
   barbearias: Barbearia[];
   fisicaOuJuridica: String[] = ['J', 'F'];
@@ -64,7 +64,7 @@ export class PerfilComponent implements OnInit {
   }
 
   pegaBarbearia(): void {
-    this.barbeariaService.pegar(this.id).subscribe(barbe => {
+    this.barbeariaService.pegar(this.barbeariaId).subscribe(barbe => {
       this.barbearias = barbe;
       console.log("barbearia: " + this.barbearias[0].ds_nome)
       this.barbearia = this.barbearias[0]

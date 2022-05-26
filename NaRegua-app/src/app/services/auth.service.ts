@@ -31,6 +31,9 @@ export class AuthService {
             // armazenar detalhes do usuário e token jwt no localStorage para manter o usuário logado entre as atualizações da página
             console.log('Recebeu token')
             localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('token', JSON.stringify(user.token));
+            localStorage.setItem('user_id', JSON.stringify(user.user_id));
+            localStorage.setItem('barbearia_id', JSON.stringify(user.barbearia_id));
           } else {
             console.log('não recebeu token')
           }
@@ -43,6 +46,9 @@ export class AuthService {
     // Limpa o token removendo o usuário do local store para efetuar o logout
     this.token = null;
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('barbearia_id');
   }
 
 }

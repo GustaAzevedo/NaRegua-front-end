@@ -12,12 +12,22 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
-
   constructor(private authService: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request);
   }
+
+  retornaUser(): any {
+    let token = {
+      token: localStorage.getItem('token'),
+      user_id: localStorage.getItem('user_id'),
+      barbearia_id: localStorage.getItem('barbearia_id')
+    }
+    return token
+  }
+
+
   /*
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler):
     Promise<HttpEvent<any>> {
