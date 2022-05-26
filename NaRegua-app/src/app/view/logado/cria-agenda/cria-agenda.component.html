@@ -4,7 +4,7 @@
     <div class="col-12 py-md-4 px-md-3 ">
       <h2 class="titlee col-5">Agenda</h2>
     </div>
-    <div class="col-8 p-0 pt-4 card">
+    <div class="col-8 col-xl-7 p-0 pt-4 card">
       <div class="row m-0">
 
         <div class="col-12 p-0" *ngIf="alteraOuCria == false">
@@ -13,16 +13,16 @@
               <p class="subtitle">Horário</p>
             </div>
 
-            <div class="col-2 pt-2">
-              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_inicio" name={{horario.hr_inicio}} class="form-control w-100"
-                placeholder="07:00">
+            <div class="col-2 col-xl-3 pt-2">
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_inicio"
+                name={{horario.hr_inicio}} class="form-control w-100" placeholder="07:00">
             </div>
-            <div class="col-1 pt-2">
-              <p class="subtitle text-center">Até</p>
+            <div class="col-1 col-xl-2 pt-2">
+              <p class="subtitle m-0 text-center">Até</p>
             </div>
-            <div class="col-2 pt-2">
-              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_fim" name={{horario.hr_fim}} class="form-control w-100"
-                placeholder="08:00">
+            <div class="col-2 col-xl-3 pt-2">
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_fim"
+                name={{horario.hr_fim}} class="form-control w-100" placeholder="08:00">
             </div>
 
           </div>
@@ -33,7 +33,7 @@
             <div class="col-8">
               <p class="subtitle">Dias da semana</p>
             </div>
-            <div class="col-8 p-0 pt-4">
+            <div class="col-8 col-xl-10 p-0 pt-4">
               <div class="row m-0 ">
                 <div class="radio col-4">
                   <input class="" type="checkbox" value="" [checked]="horario.tg_domingo == 1"
@@ -81,16 +81,16 @@
               <p class="subtitle">Horário</p>
             </div>
 
-            <div class="col-2 pt-2">
-              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_inicio" name={{horario2.hr_inicio}} class="form-control w-100"
-                placeholder="07:00">
+            <div class="col-2 col-xl-3 pt-2">
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_inicio"
+                name={{horario2.hr_inicio}} class="form-control w-100" placeholder="07:00">
             </div>
-            <div class="col-1 pt-2">
+            <div class="col-1 col-xl-2 pt-2">
               <p class="subtitle text-center">Até</p>
             </div>
-            <div class="col-2 pt-2">
-              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_fim" name={{horario2.hr_fim}} class="form-control w-100"
-                placeholder="08:00">
+            <div class="col-2 col-xl-3 pt-2">
+              <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario2.hr_fim"
+                name={{horario2.hr_fim}} class="form-control w-100" placeholder="08:00">
             </div>
 
           </div>
@@ -101,7 +101,7 @@
             <div class="col-8">
               <p class="subtitle">Dias da semana</p>
             </div>
-            <div class="col-8 p-0 pt-4">
+            <div class="col-8 col-xl-10 p-0 pt-4">
               <div class="row m-0 ">
                 <div class="radio col-4">
                   <input class="" type="checkbox" value="" [checked]="horario2.tg_domingo == 1"
