@@ -16,6 +16,7 @@ export class Barbearia {
   hx_logo?: String
   user_id?: Number
   tg_inativo?: Boolean
+  tg_pessoa?: String
   created_at?: Date
   updated_at?: Date
 }
