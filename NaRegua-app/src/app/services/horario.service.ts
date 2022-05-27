@@ -24,6 +24,8 @@ const httpOptions = {
 })
 export class HorarioService {
 
+  barbearia_id = localStorage.getItem('barbearia_id');
+
   constructor(private snackkBar: MatSnackBar, private HTTP: HttpClient) { }
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -41,7 +43,8 @@ export class HorarioService {
   }
 
   listar(): Observable<Horario[]> {
-    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'horario').pipe(
+
+    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/horarios').pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj)
     )

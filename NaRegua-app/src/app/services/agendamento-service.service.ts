@@ -14,6 +14,8 @@ const apiUrlInfoGES = environment.apiUrl;
 export class AgendamentoService {
 
   ticket = '';
+  barbearia_id = localStorage.getItem('barbearia_id');
+
   constructor(private HTTP: HttpClient) { }
 
   listar(): Observable<Agendamento[]> {
@@ -23,25 +25,25 @@ export class AgendamentoService {
   }
 
   listarPendetes(): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos?confirmado=0').pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos?confirmado=0').pipe(
       map((obj) => obj)
     )
   }
 
   listarDiarios(data: String): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos?data=' + data).pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos?data=' + data).pipe(
       map((obj) => obj)
     )
   }
 
   listaMensal(): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos?mes=1').pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos?mes=1').pipe(
       map((obj) => obj)
     )
   }
 
   listarDaBarb(): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/1/agendamentos').pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos').pipe(
       map((obj) => obj)
     )
   }

@@ -23,12 +23,6 @@ export class AgendaComponent implements OnInit {
     console.log('CurrentUser:' + this.currentuser)
   }
 
-  ordena() {
-    this.horarios.sort(function (a, b) {
-      return Number(a.hr_inicio) - Number(b.hr_inicio);
-    });
-  }
-
   listar() {
     this.horarioService.listar().subscribe(horario => {
       this.horarios = horario;
