@@ -1,0 +1,31 @@
+.agendamento {
+
+  p {
+    margin: 0;
+  }
+
+  .titlee {
+    color: var(--yellow);
+    font-size: 2.5rem !important;
+    display: inline;
+  }
+
+  .subtitle {
+    color: var(--gray);
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+
+  .form-control {
+    display: inline;
+    max-width: 100%;
+  }
+
+  .txt-area {
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+  }
+
+
+}

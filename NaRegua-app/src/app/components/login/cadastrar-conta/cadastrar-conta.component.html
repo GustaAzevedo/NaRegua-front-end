@@ -12,7 +12,7 @@
 
           <div class="col-12">
             <label class="form-label">Senha</label>
-            <input class="form-control" type="password" [(ngModel)]="password" name={{password}}>
+            <input class="form-control" type="password" [required]="password" [(ngModel)]="password" name={{password}}>
           </div>
 
           <div class="col-12">
@@ -27,7 +27,7 @@
                 <button class=" w-100 btn btn-warning-2" routerLink="../">Cancelar</button>
               </div>
               <div class="col-6 col-md-3 p-0">
-                <button class=" w-100 btn btn-warning">Cadastrar</button>
+                <button class=" w-100 btn btn-warning" (click)="criarCt()">Cadastrar</button>
               </div>
             </div>
           </div>

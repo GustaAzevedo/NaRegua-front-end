@@ -37,7 +37,8 @@
       <div class="row m-0 mt-3 linha px-1 py-3" *ngFor="let ag of agendamento">
         <p class="col-4 table-title">{{ag.hr_inicio}} - {{ag.hr_fim}}</p>
         <p class="col-6 table-title-2 ">{{ag.ds_cliente}}</p>
-        <button class="col-2 table-title-2 text-end"><i class="fa-solid fa-pencil p-1 color"></i></button>
+        <button class="col-2 table-title-2 text-end" (click)="preenche()"><i
+            class="fa-solid fa-pencil p-1 color"></i></button>
       </div>
     </div>
   </div>

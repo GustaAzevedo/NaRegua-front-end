@@ -1,0 +1,76 @@
+<div class="agendamento w-100 row m-0 ">
+
+  <div class="w-100 title row m-0 ">
+    <div class="col-12 py-md-4 px-md-3 ">
+      <h2 class="titlee col-5">Agenda</h2>
+    </div>
+    <div class="col-8 col-xl-8 p-1 pt-4 card">
+      <div class="row m-0">
+
+        <div class="col-12 p-0">
+          <div class="row m-0">
+
+            <div class="col-6 p-0">
+              <div class="row m-0">
+                <div class="col-12 p-1">
+                  <p class="subtitle">Data</p>
+                </div>
+                <div class="col-6 p-1 pt-2">
+                  <input type="date" class="form-control w-100" placeholder="07:00">
+                </div>
+                <div class="col-6 p-1 pt-2">
+                  <input type="text" class="form-control w-100" placeholder="dia da semana" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 p-0">
+              <div class="row m-0">
+                <div class="col-12 p-1 ">
+                  <p class="subtitle">Horário</p>
+                </div>
+                <div class="col-5 p-1 pt-2">
+                  <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" class="form-control w-100"
+                    placeholder="07:00">
+                </div>
+                <div class="col-2 p-0 pt-2">
+                  <p class="subtitle m-0 text-center pt-2">Até</p>
+                </div>
+                <div class="col-5 p-1 pt-2">
+                  <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" class="form-control w-100"
+                    placeholder="08:00">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 p-0">
+              <div class="row m-0">
+                <div class="col-12 p-1 ">
+                  <p class="subtitle">Cliente</p>
+                </div>
+                <div class="col-12 p-1 pt-2">
+                  <input type="text" class="form-control w-100" placeholder="07:00">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 p-0">
+              <div class="row m-0">
+                <div class="col-12 p-1 ">
+                  <p class="subtitle">Observação</p>
+                </div>
+                <div class="col-12 p-1 pt-2">
+                  <textarea name="textarea" rows="10" class="col-12 txt-area"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 p-0 pt-5 pb-2">
+          <div class="row m-0 justify-content-end">
+            <button class="btn btn-warning-2 col-3 me-2" routerLink="/logado/agendamento">Cancelar</button>
+            <button *ngIf="!salvarCriar" class="btn btn-warning col-3">Cria</button>
+            <button *ngIf="salvarCriar" class="btn btn-warning col-3">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

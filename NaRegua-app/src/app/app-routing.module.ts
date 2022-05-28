@@ -10,6 +10,7 @@ import { CadastrarComponent } from './view/logado/cadastrar/cadastrar.component'
 import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
+import { CriaAgendamentoComponent } from './view/logado/agendamento/cria-agendamento/cria-agendamento.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: "agendamento",
         component: AgendamentoComponent
+      },
+      {
+        path: "cria-agendamento",
+        component: CriaAgendamentoComponent
       },
       {
         path: "cadastrar",

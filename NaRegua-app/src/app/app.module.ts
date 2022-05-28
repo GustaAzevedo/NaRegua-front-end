@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 //  Materia
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { DatePipe } from '@angular/common'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //views
 import { LoginComponent } from './view/login/login.component';
@@ -23,11 +23,13 @@ import { CadastrarComponent } from './view/logado/cadastrar/cadastrar.component'
 import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CriaAgendamentoComponent } from './view/logado/agendamento/cria-agendamento/cria-agendamento.component';
+
 
 // Parte para identificar local
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import { DatePipe } from '@angular/common'
 
 registerLocaleData(localePt, 'pt');
 
@@ -44,6 +46,7 @@ registerLocaleData(localePt, 'pt');
     AgendaComponent,
     PerfilComponent,
     CriaAgendaComponent,
+    CriaAgendamentoComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ registerLocaleData(localePt, 'pt');
     },
     { provide: LOCALE_ID, useValue: 'pt' },
     {
-      provide:  DEFAULT_CURRENCY_CODE,
+      provide: DEFAULT_CURRENCY_CODE,
       useValue: 'BRL'
     },
   ],

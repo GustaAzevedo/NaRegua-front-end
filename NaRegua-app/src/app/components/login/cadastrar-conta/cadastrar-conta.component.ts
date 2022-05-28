@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarContaComponent implements OnInit {
   password: String;
-  user: User = {
-    name: ''
+  user: any = {
+    email: '',
+    password: '',
+    name: '',
   }
 
   constructor() { }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Agendamento } from './../../../models/Agendamento';
 import { AgendamentoService } from './../../../services/agendamento-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,7 @@ export class AgendamentoComponent implements OnInit {
   data: Date = new Date();
   diaSemana: String;
   data2: Date;
-  constructor(private agendamentoService: AgendamentoService) { }
+  constructor(private agendamentoService: AgendamentoService, private router: Router) { }
 
   ngOnInit(): void {
     this.retornaDia();
@@ -51,6 +52,10 @@ export class AgendamentoComponent implements OnInit {
         this.diaSemana = 'Domingo';
         break;
     }
+  }
+
+  preenche(): void {
+    this.router.navigate(['/logado/cria-agendamento'])
   }
 
 }
