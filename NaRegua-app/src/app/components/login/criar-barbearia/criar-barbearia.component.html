@@ -1,0 +1,112 @@
+<div class="formulario-dados card p-3">
+  <div class="col-12 ">
+    <div class="row m-0 input-group">
+
+      <h3 class="title">Dados Pessoais</h3>
+      <div class="w-100 linha"></div>
+      <div class="col-7">
+        <p class="">Razão Social/Nome do Dono*</p>
+        <input class="w-100 form-control" type="text" placeholder="" name={{barbearia.ds_razao}}
+          [(ngModel)]="barbearia.ds_razao">
+      </div>
+      <div class="col-5">
+        <p class="">Nome Barbearia*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_nome}} [(ngModel)]="barbearia.ds_nome">
+      </div>
+      <div class="col-2">
+        <p>Tipo pessoa*</p>
+        <select class="w-100 form-select" name={{tipoPessoa}} [(ngModel)]="tipoPessoa">
+          <option *ngFor="let s of fisicaOuJuridica;" [ngValue]="s">{{s}}</option>
+        </select>
+      </div>
+      <div class="col-5">
+        <p>CPF/CNPJ*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_cpfcnpj}} [(ngModel)]="barbearia.ds_cpfcnpj">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12 ">
+    <div class="row m-0 input-group">
+
+      <h3 class="title">Contato</h3>
+      <div class="w-100 linha"></div>
+      <div class="col-6">
+        <p class="">E-mail*</p>
+        <input class="w-100 form-control" type="text" placeholder="" name={{barbearia.ds_email}}
+          [(ngModel)]="barbearia.ds_email">
+      </div>
+      <div class="col-3">
+        <p class="">Celular*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_celular}} [(ngModel)]="barbearia.ds_celular">
+      </div>
+      <div class="col-3">
+        <p>Telefone</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_telefone}}
+          [(ngModel)]="barbearia.ds_telefone">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 ">
+    <div class="row m-0 input-group">
+
+      <h3 class="title">Endereço</h3>
+      <div class="w-100 linha"></div>
+      <div class="col-3">
+        <p class="">CEP*</p>
+        <input class="w-100 form-control" type="text" placeholder="" name={{barbearia.ds_cep}}
+          [(ngModel)]="barbearia.ds_cep">
+      </div>
+      <div class="col-9">
+        <p class="">Endereço*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_endereco}}
+          [(ngModel)]="barbearia.ds_endereco">
+      </div>
+      <div class="col-2">
+        <p class="">Nº*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_numero}} [(ngModel)]="barbearia.ds_numero">
+      </div>
+      <div class="col-5">
+        <p class="">Bairro*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_bairro}} [(ngModel)]="barbearia.ds_bairro">
+      </div>
+      <div class="col-5">
+        <p class="">Cidade*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_cidade}} [(ngModel)]="barbearia.ds_cidade">
+      </div>
+      <div class="col-2">
+        <p class="">UF*</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_uf}} [(ngModel)]="barbearia.ds_uf">
+      </div>
+      <div class="col-10">
+        <p class="">Complemento/Referência</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.ds_completo}}
+          [(ngModel)]="barbearia.ds_completo">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 ">
+    <div class="row m-0 input-group">
+
+      <h3 class="title ">Logo</h3>
+      <div class="w-100 linha"></div>
+
+      <div class="col-4 mt-5 text-center borda">
+        <img class="w-100" src={{barbearia.hx_logo}} class="img" alt="">
+      </div>
+      <div class="col-8">
+        <p class="">Url da imagem</p>
+        <input class="w-100 form-control" type="text" name={{barbearia.hx_logo}} [(ngModel)]="barbearia.hx_logo">
+      </div>
+      <div class="col-12 p-3">
+        <div class="row m-0 text-end justify-content-md-end">
+          <button class="col-2 btn me-2  btn-warning-2" routerLink="../">Cancelar</button>
+          <button class="col-2 btn btn-warning" (click)="salvar()">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

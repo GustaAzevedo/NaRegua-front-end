@@ -1,16 +1,16 @@
-export class Horario {
-  id?: number
+export interface Horario {
+  id?: Number
   hr_inicio?: String
   hr_fim?: String
-  tg_segunda?: number
-  tg_terca?: number
-  tg_quarta?: number
-  tg_quinta?: number
-  tg_sexta?: number
-  tg_sabado?: number
-  tg_domingo?: number
-  tg_inativo?: number
-  barbearia_id?: number
+  tg_segunda?: Number
+  tg_terca?: Number
+  tg_quarta?: Number
+  tg_quinta?: Number
+  tg_sexta?: Number
+  tg_sabado?: Number
+  tg_domingo?: Number
+  tg_inativo?: Number
+  barbearia_id?: Number
   created_at?: String
   updated_at?: String
 

@@ -12,14 +12,17 @@ const apiUrlInfoGES = environment.apiUrl;
   providedIn: 'root'
 })
 export class AgendamentoService {
-
+  id: Number = 1
   ticket = '';
   barbearia_id = localStorage.getItem('barbearia_id');
 
   constructor(private HTTP: HttpClient) { }
 
   listar(): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'agendamentos').pipe(
+
+    let url = `${apiUrlInfoGES}barbearia/${this.id}/agendamentos`
+    console.log("Url: " + url)
+    return this.HTTP.get<Agendamento[]>(url).pipe(
       map((obj) => obj)
     )
   }

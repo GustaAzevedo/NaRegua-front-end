@@ -51,6 +51,15 @@ export class BarbeariaService {
     )
   }
 
+  criar(barbearia: Barbearia): Observable<Barbearia> {
+    let url = `${apiUrlInfoGES}barbearia`;
+
+    return this.HTTP.post<Barbearia>(url, barbearia, httpOptions).pipe(
+      catchError((e) => this.errorHandler(e)),
+      map((obj) => obj),
+    );
+  }
+
   update(barbearia: Barbearia): Observable<Barbearia> {
     let url = `${apiUrlInfoGES}barbearia/${barbearia.id}`;
     return this.HTTP.put<Barbearia>(url, barbearia, httpOptions).pipe(

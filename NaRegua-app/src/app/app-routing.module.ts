@@ -11,6 +11,7 @@ import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
 import { CriaAgendamentoComponent } from './view/logado/agendamento/cria-agendamento/cria-agendamento.component';
+import { CriarBarbeariaComponent } from './components/login/criar-barbearia/criar-barbearia.component'
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: "criar-conta",
         component: CadastrarContaComponent
+      },
+      {
+        path: "criar-barbearia",
+        component: CriarBarbeariaComponent
       }
 
     ]

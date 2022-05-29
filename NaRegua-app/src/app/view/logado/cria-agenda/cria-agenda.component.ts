@@ -11,6 +11,16 @@ import { DatePipe } from '@angular/common'
   styleUrls: ['./cria-agenda.component.scss']
 })
 export class CriaAgendaComponent implements OnInit {
+  horaInicio: string
+  horaFim: string
+  tg_domingo: Number
+  tg_segunda: Number
+  tg_terca: Number
+  tg_quarta: Number
+  tg_quinta: Number
+  tg_sexta: Number
+  tg_sabado: Number
+
   data = new Date();
   horarios: Horario[];
   horario: Horario = {
@@ -28,21 +38,8 @@ export class CriaAgendaComponent implements OnInit {
     updated_at: null,
     created_at: null
   };
-  horario2: Horario = {
-    hr_fim: '',
-    hr_inicio: '',
-    tg_domingo: 0,
-    tg_segunda: 0,
-    tg_terca: 0,
-    tg_quarta: 0,
-    tg_quinta: 0,
-    tg_sexta: 0,
-    tg_sabado: 0,
-    tg_inativo: 0,
-    barbearia_id: 1,
-    updated_at: null,
-    created_at: null
-  };
+  horario2: Horario;
+
   alteraOuCria: boolean = false;
 
   constructor(private horarioService: HorarioService, private router: Router, private route: ActivatedRoute, public datepipe: DatePipe) {
@@ -52,7 +49,6 @@ export class CriaAgendaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.params.subscribe(params => {
       this.horario2 = params;
       console.log("criado: " + this.horario2.created_at)
@@ -61,10 +57,20 @@ export class CriaAgendaComponent implements OnInit {
       }
     })
 
+    this.horaInicio = this.horario2.hr_inicio.toString();
+    this.horaFim = this.horario2.hr_fim.toString();
+    this.tg_domingo = this.horario2.tg_domingo
+    this.tg_segunda = this.horario2.tg_segunda
+    this.tg_terca = this.horario2.tg_terca
+    this.tg_quarta = this.horario2.tg_quarta
+    this.tg_quinta = this.horario2.tg_quinta
+    this.tg_sexta = this.horario2.tg_sexta
+    this.tg_sabado = this.horario2.tg_sabado
+
   }
 
   cria(): void {
-    if (this.alteraOuCria == false) {
+    if (this.alteraOuCria == false) { //--Aqui cria
       this.horario.updated_at = Date.now().toString();
       this.horario.created_at = Date.now().toString();
       this.horarioService.create(this.horario).subscribe(() => {
@@ -72,11 +78,33 @@ export class CriaAgendaComponent implements OnInit {
         this.router.navigate(['/logado/agenda'])
       })
     }
-    else {
-      this.horarioService.update(this.horario2).subscribe(() => {
+    else { //--Aqui Altera
+
+      let hr: Horario = {
+        tg_domingo: this.tg_domingo,
+        tg_segunda: this.tg_segunda,
+        tg_terca: this.tg_terca,
+        tg_quarta: this.tg_quarta,
+        tg_quinta: this.tg_quinta,
+        tg_sexta: this.tg_sexta,
+        tg_sabado: this.tg_sabado,
+        created_at: this.horario2.created_at,
+        updated_at: Date.now().toString(),
+        hr_fim: this.horaFim,
+        hr_inicio: this.horaInicio,
+        tg_inativo: this.horario2.tg_inativo,
+        barbearia_id: this.horario2.barbearia_id,
+        id: this.horario2.id
+
+      }
+      console.log('Horarios: ' + hr.hr_inicio, hr.tg_domingo, hr.tg_segunda)
+
+      this.horarioService.update(hr).subscribe(() => {
         this.horarioService.showMessage('Agenda salvo');
         this.router.navigate(['/logado/agenda'])
       })
+
+
     }
   }
 
@@ -87,9 +115,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraDom(n: Number): Number {
     if (n == 0) {
       this.horario.tg_domingo = 1
+      this.tg_domingo = 1
     }
     else {
       this.horario.tg_domingo = 0
+      this.tg_domingo = 0
     }
     return n
   }
@@ -97,9 +127,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraSeg(n: Number): Number {
     if (n == 0) {
       this.horario.tg_segunda = 1
+      this.tg_segunda = 1
     }
     else {
       this.horario.tg_segunda = 0
+      this.tg_segunda = 0
     }
     return n
   }
@@ -107,9 +139,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraTer(n: Number): Number {
     if (n == 0) {
       this.horario.tg_terca = 1
+      this.tg_terca = 1
     }
     else {
       this.horario.tg_terca = 0
+      this.tg_terca = 0
     }
     return n
   }
@@ -117,9 +151,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraQua(n: Number): Number {
     if (n == 0) {
       this.horario.tg_quarta = 1
+      this.tg_quarta = 1
     }
     else {
       this.horario.tg_quarta = 0
+      this.tg_quarta = 0
     }
     return n
   }
@@ -127,9 +163,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraQui(n: Number): Number {
     if (n == 0) {
       this.horario.tg_quinta = 1
+      this.tg_quinta = 1
     }
     else {
       this.horario.tg_quinta = 0
+      this.tg_quinta = 0
     }
     return n
   }
@@ -137,9 +175,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraSex(n: Number): Number {
     if (n == 0) {
       this.horario.tg_sexta = 1
+      this.tg_sexta = 1
     }
     else {
       this.horario.tg_sexta = 0
+      this.tg_sexta = 0
     }
     return n
   }
@@ -147,9 +187,11 @@ export class CriaAgendaComponent implements OnInit {
   alteraSab(n: Number): Number {
     if (n == 0) {
       this.horario.tg_sabado = 1
+      this.tg_sabado = 1
     }
     else {
       this.horario.tg_sabado = 0
+      this.tg_sabado = 0
     }
     return n
   }

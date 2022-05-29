@@ -24,12 +24,13 @@ import { AgendaComponent } from './view/logado/agenda/agenda.component';
 import { PerfilComponent } from './view/logado/perfil/perfil.component';
 import { CriaAgendaComponent } from './view/logado/cria-agenda/cria-agenda.component';
 import { CriaAgendamentoComponent } from './view/logado/agendamento/cria-agendamento/cria-agendamento.component';
+import { CriarBarbeariaComponent } from './components/login/criar-barbearia/criar-barbearia.component'
 
 
 // Parte para identificar local
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
 
@@ -47,6 +48,7 @@ registerLocaleData(localePt, 'pt');
     PerfilComponent,
     CriaAgendaComponent,
     CriaAgendamentoComponent,
+    CriarBarbeariaComponent
   ],
   imports: [
     BrowserModule,

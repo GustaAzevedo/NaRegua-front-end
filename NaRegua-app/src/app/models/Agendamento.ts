@@ -11,4 +11,5 @@ export class Agendamento {
   barbearia_id?: number
   created_at?: String
   updated_at?: String
+
 }

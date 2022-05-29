@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agendamento.component.scss']
 })
 export class AgendamentoComponent implements OnInit {
-  agendamento: Agendamento[];
+  agendamento: Agendamento[] = []
+  agendamento2: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  mappp: Agendamento[];
 
   data: Date = new Date();
   diaSemana: String;
@@ -21,8 +23,9 @@ export class AgendamentoComponent implements OnInit {
     this.retornaDia();
     this.agendamentoService.listar().subscribe(agendamentos => {
       this.agendamento = agendamentos;
-      console.log("Agendamento: " + this.agendamento[0].hr_inicio)
+      //console.log("Agendamento: " + this.agendamento[0].hr_inicio)
     })
+
   }
 
   retornaDia(): void {
