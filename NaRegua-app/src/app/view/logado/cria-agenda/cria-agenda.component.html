@@ -13,14 +13,14 @@
               <p class="subtitle">Horário</p>
             </div>
 
-            <div class="col-2 col-xl-3 pt-2">
+            <div class="col-4 col-xl-3 pt-2">
               <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_inicio"
                 name={{horario.hr_inicio}} class="form-control w-100" placeholder="07:00">
             </div>
-            <div class="col-1 col-xl-2 pt-2">
+            <div class="col-2 col-xl-2 pt-3">
               <p class="subtitle m-0 text-center">Até</p>
             </div>
-            <div class="col-2 col-xl-3 pt-2">
+            <div class="col-4 col-xl-3 pt-2">
               <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horario.hr_fim"
                 name={{horario.hr_fim}} class="form-control w-100" placeholder="08:00">
             </div>
@@ -33,7 +33,7 @@
             <div class="col-8">
               <p class="subtitle">Dias da semana</p>
             </div>
-            <div class="col-8 col-xl-10 p-0 pt-4">
+            <div class="col-11 col-xl-10 p-0 pt-4">
               <div class="row m-0 ">
                 <div class="radio col-4">
                   <input class="" type="checkbox" value="" [checked]="horario.tg_domingo == 1"
@@ -81,14 +81,14 @@
               <p class="subtitle">Horário</p>
             </div>
 
-            <div class="col-2 col-xl-3 pt-2">
+            <div class="col-3 col-xl-3 pt-2">
               <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horaInicio"
                 name={{horario2.hr_inicio}} class="form-control w-100" placeholder="07:00">
             </div>
-            <div class="col-1 col-xl-2 pt-2">
+            <div class="col-2 col-xl-2 pt-3">
               <p class="subtitle text-center">Até</p>
             </div>
-            <div class="col-2 col-xl-3 pt-2">
+            <div class="col-3 col-xl-3 pt-2">
               <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" [(ngModel)]="horaFim"
                 name={{horario2.hr_fim}} class="form-control w-100" placeholder="08:00">
             </div>
@@ -101,7 +101,7 @@
             <div class="col-8">
               <p class="subtitle">Dias da semana</p>
             </div>
-            <div class="col-8 col-xl-10 p-0 pt-4">
+            <div class="col-11 col-xl-10 p-0 pt-4">
               <div class="row m-0 ">
                 <div class="radio col-4">
                   <input matInput class="" type="checkbox" value="" [checked]="tg_domingo == 1"
@@ -139,8 +139,8 @@
           </div>
         </div>
 
-        <div class="col-8 p-0 pt-5 pb-2">
-          <div class="row m-0 justify-content-end">
+        <div class="col-12 p-0 pt-5 pb-2 p-1">
+          <div class="row m-0 justify-content-center">
             <button class="btn btn-warning-2 col-3 me-2" (click)="voltar()">Cancelar</button>
             <button *ngIf="!alteraOuCria" class="btn btn-warning col-3 " (click)="cria()">Cria</button>
             <button *ngIf="alteraOuCria" class="btn btn-warning col-3" (click)="cria()">Salvar</button>

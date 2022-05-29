@@ -57,15 +57,21 @@ export class CriaAgendaComponent implements OnInit {
       }
     })
 
-    this.horaInicio = this.horario2.hr_inicio.toString();
-    this.horaFim = this.horario2.hr_fim.toString();
-    this.tg_domingo = this.horario2.tg_domingo
-    this.tg_segunda = this.horario2.tg_segunda
-    this.tg_terca = this.horario2.tg_terca
-    this.tg_quarta = this.horario2.tg_quarta
-    this.tg_quinta = this.horario2.tg_quinta
-    this.tg_sexta = this.horario2.tg_sexta
-    this.tg_sabado = this.horario2.tg_sabado
+    if (this.alteraOuCria) {
+      this.horaInicio = this.horario2.hr_inicio.toString();
+      this.horaFim = this.horario2.hr_fim.toString();
+      this.tg_domingo = this.horario2.tg_domingo
+      this.tg_segunda = this.horario2.tg_segunda
+      this.tg_terca = this.horario2.tg_terca
+      this.tg_quarta = this.horario2.tg_quarta
+      this.tg_quinta = this.horario2.tg_quinta
+      this.tg_sexta = this.horario2.tg_sexta
+      this.tg_sabado = this.horario2.tg_sabado
+    }
+    else {
+
+    }
+
 
   }
 
