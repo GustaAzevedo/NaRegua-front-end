@@ -20,7 +20,7 @@
     <div class="col-12">
       <!-- ng-for dados lista-->
       <div class="row m-0 mt-3 linha active px-1 py-3" *ngFor="let h of horarios">
-        <p class="col-4 table-title align-items-center">{{h.hr_inicio}} - {{h.hr_fim}}</p>
+        <p class="col-4 table-title align-items-center">{{h.hr_inicio }} - {{h.hr_fim}}</p>
         <p class="col-6 table-title-2">
           <span [ngClass]="{'text':!h.tg_domingo}">D</span><span [ngClass]="{'text':!h.tg_segunda}">S</span>
           <span [ngClass]="{'text':!h.tg_terca}">T</span><span [ngClass]="{'text':!h.tg_quarta}">Q</span><span

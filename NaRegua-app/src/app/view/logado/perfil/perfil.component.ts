@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+
   barbeariaId: any = 1;
   img: string = 'https://via.placeholder.com/500x1400';
   barbearias: Barbearia[];
@@ -60,6 +61,12 @@ export class PerfilComponent implements OnInit {
   constructor(private barbeariaService: BarbeariaService, private router: Router,) { }
 
   ngOnInit(): void {
+    let tk = {
+      token: localStorage.getItem('token'),
+      user_id: localStorage.getItem('user_id'),
+      barbearia_id: localStorage.getItem('barbearia_id')
+    }
+    this.barbeariaId = tk.barbearia_id
     this.pegaBarbearia();
   }
 

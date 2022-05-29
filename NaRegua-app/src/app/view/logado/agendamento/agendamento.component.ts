@@ -1,3 +1,6 @@
+import { Horario } from './../../../models/Horario';
+import { HorarioService } from './../../../services/horario.service';
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { Agendamento } from './../../../models/Agendamento';
 import { AgendamentoService } from './../../../services/agendamento-service.service';
@@ -11,27 +14,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendamentoComponent implements OnInit {
   agendamento: Agendamento[] = []
-  agendamento2: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  mappp: Agendamento[];
+  agendamento2: any[] = []
+  Horarios: Horario[] = []
 
+  mappp: Agendamento[];
+  dt: any;
   data: Date = new Date();
   diaSemana: String;
   data2: Date;
-  constructor(private agendamentoService: AgendamentoService, private router: Router) { }
+  constructor(private agendamentoService: AgendamentoService, private horario: HorarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.retornaDia();
     this.agendamentoService.listar().subscribe(agendamentos => {
       this.agendamento = agendamentos;
-      //console.log("Agendamento: " + this.agendamento[0].hr_inicio)
     })
 
   }
 
+
+
   retornaDia(): void {
     //console.log('Entrou' + this.data.toString())
-    this.data = new Date(this.data)
+    console.log('Entrou: ' + this.dt)
 
+    var datePipe = new DatePipe("en-US");
+    if (this.dt == null) {
+      this.dt = datePipe.transform(this.data, 'yyyy-MM-dd');
+
+    } else {
+      this.dt = datePipe.transform(this.dt, 'yyyy-MM-dd');
+    }
+    this.data = new Date(this.dt)
+
+    console.log("Data formatada" + this.dt + ", Data: " + this.data)
     switch (this.data.getDay()) {
       case 1:
         this.diaSemana = 'Segunda';

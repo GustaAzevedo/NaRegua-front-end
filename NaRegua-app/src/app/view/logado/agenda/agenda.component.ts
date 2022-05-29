@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class AgendaComponent implements OnInit {
   currentuser = localStorage.getItem('currentUser');
 
+  hr_inico: String
+
   horarios: Horario[];
   horarios2: Horario[];
   criarAlterar: boolean = false;
@@ -18,16 +20,16 @@ export class AgendaComponent implements OnInit {
 
   ngOnInit(): void {
     this.listar()
-    console.log("sort: " + this.horarios)
-
-    console.log('CurrentUser:' + this.currentuser)
   }
 
   listar() {
     this.horarioService.listar().subscribe(horario => {
-      this.horarios = horario;
+      this.horarios = horario
       console.log("Agendamento: " + this.horarios[0].hr_inicio)
     })
+
+
+
   }
 
   adicionar(): void {
