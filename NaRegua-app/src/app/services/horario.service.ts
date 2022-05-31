@@ -50,6 +50,14 @@ export class HorarioService {
     )
   }
 
+  listarFiltro(dSemana: any): Observable<Horario[]> {
+
+    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/horarios?' + dSemana).pipe(
+      catchError((e) => this.errorHandler(e)),
+      map((obj) => obj)
+    )
+  }
+
   create(horario: Horario): Observable<Horario> {
     console.log(httpOptions)
     return this.HTTP.post<Horario>(apiUrlInfoGES + 'horario', horario, httpOptions).pipe(

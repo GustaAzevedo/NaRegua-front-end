@@ -27,6 +27,12 @@ export class AgendamentoService {
     )
   }
 
+  listarFiltro(d: any): Observable<Agendamento[]> {
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos?data=' + d).pipe(
+      map((obj) => obj)
+    )
+  }
+
   listarPendetes(): Observable<Agendamento[]> {
     return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/agendamentos?confirmado=0').pipe(
       map((obj) => obj)

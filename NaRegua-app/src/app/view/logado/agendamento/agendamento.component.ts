@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { Horario } from './../../../models/Horario';
 import { HorarioService } from './../../../services/horario.service';
 import { DatePipe } from '@angular/common';
@@ -13,12 +14,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agendamento.component.scss']
 })
 export class AgendamentoComponent implements OnInit {
-  agendamento: Agendamento[] = []
-  agendamento2: any[] = []
-  horarios: Horario[] = []
+  agendamento: Agendamento[] = [] //agendamento populado
+  agendamento2: Agendamento[] = [] //Agendamento não populado
+  horarios: Horario[] = [] //foreach
   horarios2: Horario[] = []
+  tgFiltroSemana: String;
 
-  mappp: Agendamento[];
   dt: any;
   data: Date = new Date();
   diaSemana: String;
@@ -26,32 +27,72 @@ export class AgendamentoComponent implements OnInit {
   constructor(private agendamentoService: AgendamentoService, private horarioService: HorarioService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.retornaDia();
-    let ss = this;
-    this.agendamentoService.listar().subscribe(agendamentos => {
-      ss.agendamento = agendamentos;
+    this.agendamentoFiltro();
+
+  }
+
+  agendamentoFiltro() {
+    this.agendamentoService.listarFiltro(this.dt).subscribe(agendamentos => {
+      this.agendamento = agendamentos;
+      let i = 1;
+      console.log("Inicialização: " + i)
+      if (i === 1) {
+        this.horariosFunc();
+        i = i + 1
+        console.log("Inicialização 2: " + i)
+
+      }
+    });
+  }
+
+  horariosFunc() {
+    this.horarioService.listarFiltro(this.tgFiltroSemana).subscribe(horarios => {
+      this.horarios = horarios;
+
+      console.log("Horario: " + this.horarios.length)
+      for (let i = 0; this.horarios.length > i; i++) {
+        for (let j = 0; this.agendamento.length > j; j++) {
+          console.log("agenda: " + this.agendamento[j].hr_inicio + " horario: " + this.horarios[i].hr_inicio)
+          let contador = 0;
+          if (this.agendamento[j].hr_inicio == this.horarios[i].hr_inicio && contador === 0) {
+            contador = 1
+            let ag = {
+              hr_fim: this.agendamento[j].hr_fim,
+              hr_inicio: this.agendamento[j].hr_inicio,
+              dt_agendamento: this.data.toString(),
+              barbearia_id: this.agendamento[j].barbearia_id,
+              created_at: this.agendamento[j].created_at,
+              ds_cliente: this.agendamento[j].ds_cliente,
+              ds_obs: this.agendamento[j].ds_obs,
+              tg_cancelado: this.agendamento[j].tg_cancelado,
+              updated_at: this.agendamento[j].updated_at,
+              tg_finalizado: this.agendamento[j].tg_finalizado,
+              tg_confirmado: this.agendamento[j].tg_confirmado,
+              id: this.agendamento[j].id
+            }
+            this.agendamento2.push(ag)
+          }
+          else {
+
+            let ag = {
+              hr_fim: this.horarios[i].hr_fim,
+              hr_inicio: this.horarios[i].hr_inicio,
+              dt_agendamento: this.data.toString(),
+            }
+
+
+          }
+
+        }
+      }
+
+
     })
-    this.horarioAgenda(ss)
-    this.horariosFunc();
   }
-
-  horariosFunc(): void {
-    let self = this;
-    this.horarioService.listar().subscribe(horarios => {
-      self.horarios = horarios;
-    })
-  }
-
-  horarioAgenda(a: any): void {
-    console.log("hora inicio: " + a.agendamento)
-  }
-
-
 
   retornaDia(): void {
     //console.log('Entrou' + this.data.toString())
-
 
     var datePipe = new DatePipe("en-US");
     if (this.dt == null) {
@@ -62,28 +103,36 @@ export class AgendamentoComponent implements OnInit {
     this.data = new Date(this.dt)
 
     switch (this.data.getDay()) {
-      case 1:
+      case 0:
         this.diaSemana = 'Segunda';
+        this.tgFiltroSemana = 'segunda=1'
+        break;
+      case 1:
+        this.diaSemana = 'Terça';
+        this.tgFiltroSemana = 'terca=1'
         break;
       case 2:
-        this.diaSemana = 'Terça';
+        this.diaSemana = 'Quarta';
+        this.tgFiltroSemana = 'quarta=1'
         break;
       case 3:
-        this.diaSemana = 'Quarta';
+        this.diaSemana = 'Quinta';
+        this.tgFiltroSemana = 'quinta=1'
         break;
       case 4:
-        this.diaSemana = 'Quinta';
+        this.diaSemana = 'Sexta';
+        this.tgFiltroSemana = 'sexta=1'
         break;
       case 5:
-        this.diaSemana = 'Sexta';
+        this.diaSemana = 'Sábado';
+        this.tgFiltroSemana = 'sabado=1'
         break;
       case 6:
-        this.diaSemana = 'Sábado';
-        break;
-      case 7:
         this.diaSemana = 'Domingo';
+        this.tgFiltroSemana = 'domingo=1'
         break;
     }
+    this.agendamentoFiltro();
   }
 
   preenche(): void {
