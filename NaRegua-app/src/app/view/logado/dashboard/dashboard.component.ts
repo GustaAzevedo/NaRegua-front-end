@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   agePendentes: Agendamento[];
   ageDiario: Agendamento[];
   ageMensal: Agendamento[];
+  barbearia_id = localStorage.getItem('barbearia_id');
 
 
   qtdPendentes: Number;
@@ -51,19 +52,19 @@ export class DashboardComponent implements OnInit {
 
     this.trataDia();
 
-    this.agendamentoService.listarPendetes().subscribe(agendamento => {
+    this.agendamentoService.listarPendetes(this.barbearia_id).subscribe(agendamento => {
       this.agePendentes = agendamento;
       this.qtdPendentes = this.agePendentes.length;
     }
     );
 
-    this.agendamentoService.listarDiarios(this.dataString).subscribe(agendamento => {
+    this.agendamentoService.listarDiarios(this.barbearia_id, this.dataString).subscribe(agendamento => {
       this.ageDiario = agendamento;
       this.qtdDiarios = this.ageDiario.length;
     }
     );
 
-    this.agendamentoService.listaMensal().subscribe(agendamento => {
+    this.agendamentoService.listaMensal(this.barbearia_id).subscribe(agendamento => {
       this.ageMensal = agendamento;
       this.qtdMes = this.ageMensal.length;
     }

@@ -12,6 +12,7 @@ export class AgendaComponent implements OnInit {
   currentuser = localStorage.getItem('currentUser');
 
   hr_inico: String
+  barbearia_id = localStorage.getItem('barbearia_id');
 
   horarios: Horario[];
   horarios2: Horario[];
@@ -23,7 +24,7 @@ export class AgendaComponent implements OnInit {
   }
 
   listar() {
-    this.horarioService.listar().subscribe(horario => {
+    this.horarioService.listar(this.barbearia_id).subscribe(horario => {
       this.horarios = horario
       console.log("Agendamento: " + this.horarios[0].hr_inicio)
     })
