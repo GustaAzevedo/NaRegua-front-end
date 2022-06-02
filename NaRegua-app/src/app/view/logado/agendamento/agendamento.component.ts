@@ -133,6 +133,7 @@ export class AgendamentoComponent implements OnInit {
         this.tgFiltroSemana = 'domingo=1'
         break;
     }
+    this.agendamentoFiltro()
   }
 
   preenche(ag?: Agendamento): void {

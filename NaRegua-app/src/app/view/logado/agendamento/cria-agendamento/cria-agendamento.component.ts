@@ -98,6 +98,7 @@ export class CriaAgendamentoComponent implements OnInit {
         this.tgFiltroSemana = 'domingo=1'
         break;
     }
+
   }
 
   cria(): void {
