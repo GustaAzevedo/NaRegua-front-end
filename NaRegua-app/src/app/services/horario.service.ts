@@ -42,17 +42,17 @@ export class HorarioService {
     return EMPTY
   }
 
-  listar(): Observable<Horario[]> {
+  listar(id: String): Observable<Horario[]> {
 
-    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/horarios').pipe(
+    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + id + '/horarios').pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj)
     )
   }
 
-  listarFiltro(dSemana: any): Observable<Horario[]> {
+  listarFiltro(id: String, dSemana: any): Observable<Horario[]> {
 
-    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + this.barbearia_id + '/horarios?' + dSemana).pipe(
+    return this.HTTP.get<Horario[]>(apiUrlInfoGES + 'barbearia/' + id + '/horarios?' + dSemana).pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj)
     )

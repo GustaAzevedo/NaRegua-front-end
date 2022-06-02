@@ -19,6 +19,7 @@ export class AgendamentoComponent implements OnInit {
   horarios: Horario[] = [] //foreach
   horarios2: Horario[] = []
   tgFiltroSemana: String;
+  barbearia_id = localStorage.getItem('barbearia_id');
 
   dt: any;
   data: Date = new Date();
@@ -33,7 +34,9 @@ export class AgendamentoComponent implements OnInit {
   }
 
   agendamentoFiltro() {
-    this.agendamentoService.listarFiltro(this.dt).subscribe(agendamentos => {
+    this.agendamentoService.listarFiltro(this.barbearia_id, this.dt).subscribe(agendamentos => {
+      //Sempre limpar para trazer só o dia filtrado
+      this.agendamento2 = [];
       this.agendamento = agendamentos;
       let i = 1;
       if (i === 1) {
@@ -41,10 +44,12 @@ export class AgendamentoComponent implements OnInit {
         i = i + 1
       }
     });
+
+
   }
 
   horariosFunc() {
-    this.horarioService.listarFiltro(this.tgFiltroSemana).subscribe(horarios => {
+    this.horarioService.listarFiltro(this.barbearia_id, this.tgFiltroSemana).subscribe(horarios => {
       this.horarios = horarios;
 
       console.log("Horario: " + this.horarios.length)
