@@ -1,3 +1,4 @@
+import { Barbearia } from './../../../models/Barbearia';
 import { Horario } from './../../../models/Horario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorarioService } from './../../../services/horario.service';
@@ -20,6 +21,7 @@ export class CriaAgendaComponent implements OnInit {
   tg_quinta: Number
   tg_sexta: Number
   tg_sabado: Number
+  barbearia_id = localStorage.getItem('barbearia_id');
 
   data = new Date();
   horarios: Horario[];
@@ -34,9 +36,9 @@ export class CriaAgendaComponent implements OnInit {
     tg_sexta: 0,
     tg_sabado: 0,
     tg_inativo: 0,
-    barbearia_id: 1,
     updated_at: null,
-    created_at: null
+    created_at: null,
+    barbearia_id: parseInt(this.barbearia_id)
   };
   horario2: Horario;
 
@@ -67,10 +69,10 @@ export class CriaAgendaComponent implements OnInit {
       this.tg_quinta = this.horario2.tg_quinta
       this.tg_sexta = this.horario2.tg_sexta
       this.tg_sabado = this.horario2.tg_sabado
-    }
-    else {
+      this.barbearia_id
 
     }
+
 
 
   }
