@@ -16,10 +16,11 @@
                   <p class="subtitle">Data</p>
                 </div>
                 <div class="col-6 p-1 pt-2">
-                  <input type="date" class="form-control w-100" placeholder="07:00">
+                  <input type="date" class="form-control w-100" name={{dt}} [(ngModel)]="dt" disabled="">
                 </div>
                 <div class="col-6 p-1 pt-2">
-                  <input type="text" class="form-control w-100" placeholder="dia da semana" disabled>
+                  <input type="text" class="form-control w-100" placeholder="dia da semana" name={{diaSemana}}
+                    [(ngModel)]="diaSemana" disabled>
                 </div>
               </div>
             </div>
@@ -30,14 +31,14 @@
                 </div>
                 <div class="col-5 p-1 pt-2">
                   <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" class="form-control w-100"
-                    placeholder="07:00">
+                    name={{hrInicio}} [(ngModel)]="hrInicio" disabled="">
                 </div>
                 <div class="col-2 p-0 pt-2">
                   <p class="subtitle m-0 text-center pt-2">Até</p>
                 </div>
                 <div class="col-5 p-1 pt-2">
                   <input type="text" ng-pattern="^([0|1|2]{1}\d):([0|1|2|3|4|5]{1} \d)$" class="form-control w-100"
-                    placeholder="08:00">
+                    name={{hrFim}} [(ngModel)]="hrFim" disabled="">
                 </div>
               </div>
             </div>
@@ -47,7 +48,7 @@
                   <p class="subtitle">Cliente</p>
                 </div>
                 <div class="col-12 p-1 pt-2">
-                  <input type="text" class="form-control w-100" placeholder="07:00">
+                  <input type="text" class="form-control w-100" name={{cliente}} [(ngModel)]="cliente">
                 </div>
               </div>
             </div>
@@ -57,7 +58,7 @@
                   <p class="subtitle">Observação</p>
                 </div>
                 <div class="col-12 p-1 pt-2">
-                  <textarea name="textarea" rows="10" class="col-12 txt-area"></textarea>
+                  <textarea name="textarea" rows="10" class="col-12 txt-area" name={{obs}} [(ngModel)]="obs"></textarea>
                 </div>
               </div>
             </div>
@@ -66,8 +67,8 @@
         <div class="col-12 p-0 pt-5 pb-2">
           <div class="row m-0 justify-content-end">
             <button class="btn btn-warning-2 col-3 me-2" routerLink="/logado/agendamento">Cancelar</button>
-            <button *ngIf="!salvarCriar" class="btn btn-warning col-3">Cria</button>
-            <button *ngIf="salvarCriar" class="btn btn-warning col-3">Salvar</button>
+            <button *ngIf="!alteraOuCria" class="btn btn-warning col-3" (click)="cria()">Cria</button>
+            <button *ngIf="alteraOuCria" class="btn btn-warning col-3" (click)="cria()">Salvar</button>
           </div>
         </div>
       </div>

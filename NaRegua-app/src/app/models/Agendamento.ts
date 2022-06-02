@@ -2,7 +2,7 @@ export class Agendamento {
   id?: number
   hr_inicio?: String
   hr_fim?: String
-  dt_agendamento?: String
+  dt_agendamento?: Date
   tg_cancelado?: number
   tg_confirmado?: number
   tg_finalizado?: number

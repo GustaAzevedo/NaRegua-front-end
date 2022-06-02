@@ -36,12 +36,9 @@ export class AgendamentoComponent implements OnInit {
     this.agendamentoService.listarFiltro(this.dt).subscribe(agendamentos => {
       this.agendamento = agendamentos;
       let i = 1;
-      console.log("Inicialização: " + i)
       if (i === 1) {
         this.horariosFunc();
         i = i + 1
-        console.log("Inicialização 2: " + i)
-
       }
     });
   }
@@ -52,56 +49,55 @@ export class AgendamentoComponent implements OnInit {
 
       console.log("Horario: " + this.horarios.length)
       for (let i = 0; this.horarios.length > i; i++) {
-        for (let j = 0; this.agendamento.length > j; j++) {
-          console.log("agenda: " + this.agendamento[j].hr_inicio + " horario: " + this.horarios[i].hr_inicio)
-          let contador = 0;
-          if (this.agendamento[j].hr_inicio == this.horarios[i].hr_inicio && contador === 0) {
-            contador = 1
-            let ag = {
-              hr_fim: this.agendamento[j].hr_fim,
-              hr_inicio: this.agendamento[j].hr_inicio,
-              dt_agendamento: this.data.toString(),
-              barbearia_id: this.agendamento[j].barbearia_id,
-              created_at: this.agendamento[j].created_at,
-              ds_cliente: this.agendamento[j].ds_cliente,
-              ds_obs: this.agendamento[j].ds_obs,
-              tg_cancelado: this.agendamento[j].tg_cancelado,
-              updated_at: this.agendamento[j].updated_at,
-              tg_finalizado: this.agendamento[j].tg_finalizado,
-              tg_confirmado: this.agendamento[j].tg_confirmado,
-              id: this.agendamento[j].id
-            }
-            this.agendamento2.push(ag)
+
+
+
+        let retorno: any = this.agendamento.filter(p => p.hr_inicio == this.horarios[i].hr_inicio)
+
+
+        if (retorno == null || retorno == '') {
+          let ag = {
+            hr_fim: this.horarios[i].hr_fim,
+            hr_inicio: this.horarios[i].hr_inicio,
+            dt_agendamento: this.data,
           }
-          else {
-
-            let ag = {
-              hr_fim: this.horarios[i].hr_fim,
-              hr_inicio: this.horarios[i].hr_inicio,
-              dt_agendamento: this.data.toString(),
-            }
-
-
+          this.agendamento2.push(ag)
+        }
+        else {
+          let ag = {
+            hr_fim: retorno[0].hr_fim,
+            hr_inicio: retorno[0].hr_inicio,
+            dt_agendamento: this.data,
+            barbearia_id: retorno[0].barbearia_id,
+            created_at: retorno[0].created_at,
+            ds_cliente: retorno[0].ds_cliente,
+            ds_obs: retorno[0].ds_obs,
+            tg_cancelado: retorno[0].tg_cancelado,
+            updated_at: retorno[0].updated_at,
+            tg_finalizado: retorno[0].tg_finalizado,
+            tg_confirmado: retorno[0].tg_confirmado,
+            id: retorno[0].id
           }
-
+          this.agendamento2.push(ag)
         }
       }
-
-
     })
   }
 
   retornaDia(): void {
     //console.log('Entrou' + this.data.toString())
+    console.log("DATA1: " + this.data)
 
-    var datePipe = new DatePipe("en-US");
+
+    var datePipe = new DatePipe("pt-BR");
+
     if (this.dt == null) {
       this.dt = datePipe.transform(this.data, 'yyyy-MM-dd');
     } else {
       this.dt = datePipe.transform(this.dt, 'yyyy-MM-dd');
     }
-    this.data = new Date(this.dt)
 
+    console.log("DATA2: " + this.data)
     switch (this.data.getDay()) {
       case 0:
         this.diaSemana = 'Segunda';
@@ -132,11 +128,12 @@ export class AgendamentoComponent implements OnInit {
         this.tgFiltroSemana = 'domingo=1'
         break;
     }
-    this.agendamentoFiltro();
   }
 
-  preenche(): void {
-    this.router.navigate(['/logado/cria-agendamento'])
+  preenche(ag?: Agendamento): void {
+
+    this.router.navigate(['/logado/cria-agendamento', ag])
+
   }
 
 }
