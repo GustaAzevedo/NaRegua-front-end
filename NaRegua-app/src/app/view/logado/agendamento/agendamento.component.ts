@@ -22,6 +22,7 @@ export class AgendamentoComponent implements OnInit {
   barbearia_id = localStorage.getItem('barbearia_id');
 
   dt: any;
+  dtfiltro: any;
   data: Date = new Date();
   diaSemana: String;
   data2: Date;
@@ -34,16 +35,17 @@ export class AgendamentoComponent implements OnInit {
   }
 
   agendamentoFiltro() {
+
+    //Sempre limpar para trazer só o dia filtrado
+    this.agendamento2 = [];
+
     this.agendamentoService.listarFiltro(this.barbearia_id, this.dt).subscribe(agendamentos => {
-      //Sempre limpar para trazer só o dia filtrado
-      this.agendamento2 = [];
+
       this.agendamento = agendamentos;
-      let i = 1;
-      if (i === 1) {
-        this.horariosFunc();
-        i = i + 1
-      }
+      this.horariosFunc();
+
     });
+
 
 
   }
@@ -90,19 +92,23 @@ export class AgendamentoComponent implements OnInit {
   }
 
   retornaDia(): void {
-    //console.log('Entrou' + this.data.toString())
-    console.log("DATA1: " + this.data)
 
 
     var datePipe = new DatePipe("pt-BR");
 
-    if (this.dt == null) {
-      this.dt = datePipe.transform(this.data, 'yyyy-MM-dd');
-    } else {
-      this.dt = datePipe.transform(this.dt, 'yyyy-MM-dd');
+    if(this.dtfiltro != null){
+      this.dtfiltro = datePipe.transform(this.data, 'yyyy-MM-dd');
+    }else{
+      if (this.dt == null) {
+        this.dt = datePipe.transform(this.data, 'yyyy-MM-dd');
+      } else {
+        this.dt = datePipe.transform(this.dt, 'yyyy-MM-dd');
+      }
     }
 
-    console.log("DATA2: " + this.data)
+
+    this.data = new Date(this.dt);
+
     switch (this.data.getDay()) {
       case 0:
         this.diaSemana = 'Segunda';
@@ -133,13 +139,29 @@ export class AgendamentoComponent implements OnInit {
         this.tgFiltroSemana = 'domingo=1'
         break;
     }
-    this.agendamentoFiltro()
+
   }
 
   preenche(ag?: Agendamento): void {
 
-    this.router.navigate(['/logado/cria-agendamento', ag])
+    ag.dt_agendamento = this.dt;
+    this.router.navigate(['/logado/cria-agendamento', ag]);
 
+  }
+
+  cancelar(ag?: Agendamento): void {
+
+    let r = window.confirm('Deseja cancelar o agendamento das ' + ag.hr_inicio + ' ?');
+    if(r){
+      ag.dt_agendamento = this.dt;
+      ag.tg_cancelado = 1;
+
+      this.agendamentoService.update(ag).subscribe(() => {
+        this.agendamentoService.showMessage('Agendamento cancelado!');
+        this.agendamentoFiltro();
+      });
+
+    }
   }
 
 }

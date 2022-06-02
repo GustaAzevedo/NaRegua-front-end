@@ -2,7 +2,7 @@
 
   <div class="w-100 title row m-0 ">
     <div class="col-12 py-md-4 px-md-3">
-      <h2 class="titlee">Agendamento</h2>
+      <h2 class="titlee">AgendamentoS</h2>
     </div>
     <div class="col-12 p-0 px-md-3">
       <div class="row m-0">
@@ -10,7 +10,7 @@
         <div class="col-8 p-0">
           <div class="row m-0">
             <div class="col-4 ">
-              <input type="date" [(ngModel)]="dt" name={{dt}} (change)="retornaDia()" class="form-control w-100">
+              <input type="date" [(ngModel)]="dt" name={{dt}} (change)="retornaDia(); agendamentoFiltro();" class="form-control w-100">
             </div>
             <div class="col-4 ">
               <input type="text" class="form-control w-100" disabled name={{diaSemana}} [(ngModel)]="diaSemana">
@@ -29,7 +29,7 @@
       <div class="row m-0 tab-title ">
         <p class="col-4 ">Horário</p>
         <p class="col-4 ">Cliente</p>
-        <p class="col-4 text-end">Cliente</p>
+        <p class="col-4 text-end">Ações</p>
       </div>
     </div>
     <div class="col-12">
@@ -37,8 +37,22 @@
       <div class="row m-0 mt-3 linha px-1 py-3" *ngFor="let ag of agendamento2">
         <p class="col-4 table-title">{{ag.hr_inicio}} - {{ag.hr_fim}}</p>
         <p class="col-6 table-title-2 ">{{ag.ds_cliente}}</p>
-        <button class="col-2 table-title-2 text-end" (click)="preenche(ag)"><i
+
+        <ng-container *ngIf="ag.ds_cliente">
+
+          <button class="col-1 table-title-2 text-end" (click)="cancelar(ag)"><i
+            class="fa-solid fa-cancel color"></i></button>
+          <button class="col-1 table-title-2 text-end" (click)="preenche(ag)"><i
             class="fa-solid fa-pencil p-1 color"></i></button>
+
+        </ng-container>
+
+
+        <ng-container *ngIf="!ag.ds_cliente">
+          <button class="col-2 table-title-2 text-end" (click)="preenche(ag)"><i
+            class="fa-solid fa-plus p-1 color"></i></button>
+        </ng-container>
+
       </div>
     </div>
   </div>

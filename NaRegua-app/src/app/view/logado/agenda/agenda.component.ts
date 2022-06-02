@@ -42,12 +42,17 @@ export class AgendaComponent implements OnInit {
   }
 
   excluir(h: Horario) {
+
+    let r = window.confirm('Deseja excluir o horário das ' + h.hr_inicio + ' ?');
+    if(r){
+
     this.horarioService.deleteHorario(h).subscribe(() => {
-      this.horarioService.showMessage('Agenda Excluída');
+      this.horarioService.showMessage('Horário Excluída');
       setTimeout(() => {
-        this.ngOnInit()
-      }, 1000)
+        this.ngOnInit();
+      }, 1000);
     });
+  }
   }
 
 }

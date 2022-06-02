@@ -56,7 +56,6 @@ export class CriaAgendamentoComponent implements OnInit {
   }
 
   retornaDia(): void {
-    //console.log('Entrou' + this.data.toString())
 
     var datePipe = new DatePipe("pt-BR");
     if (this.dt == null) {
@@ -121,7 +120,6 @@ export class CriaAgendamentoComponent implements OnInit {
 
       }
 
-      console.log("OBS: " + this.dt)
 
       this.agendamentoService.create(agend).subscribe(() => {
         this.agendamentoService.showMessage('Agendamento criado');
@@ -145,7 +143,7 @@ export class CriaAgendamentoComponent implements OnInit {
         id: this.agendamento2.id
 
       }
-      console.log("OBS: " + agend.ds_obs)
+
 
       this.agendamentoService.update(agend).subscribe(() => {
         this.agendamentoService.showMessage('Agendamento salvo');

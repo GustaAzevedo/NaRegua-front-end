@@ -53,25 +53,25 @@ export class AgendamentoService {
   }
 
   listarFiltro(id: String, d: any): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?data=' + d).pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?data=' + d + '&cancelado=0').pipe(
       map((obj) => obj)
     )
   }
 
   listarPendetes(id: String): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?confirmado=0').pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?confirmado=0&cancelado=0').pipe(
       map((obj) => obj)
     )
   }
 
   listarDiarios(id: String, data: String): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?data=' + data).pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?data=' + data + '&cancelado=0').pipe(
       map((obj) => obj)
     )
   }
 
   listaMensal(id: String): Observable<Agendamento[]> {
-    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?mes=1').pipe(
+    return this.HTTP.get<Agendamento[]>(apiUrlInfoGES + 'barbearia/' + id + '/agendamentos?mes=1&cancelado=0').pipe(
       map((obj) => obj)
     )
   }
@@ -119,7 +119,6 @@ export class AgendamentoService {
       barbearia_id: agendamento.barbearia_id
     }
 
-    console.log("aaaaaaaaaaaa: " + ag.dt_agendamento)
     let url = `${apiUrlInfoGES}agendamentos/${agendamento.id}`;
     return this.HTTP.put<Agendamento>(url, ag, httpOptions).pipe(
       catchError((e) => this.errorHandler(e)),

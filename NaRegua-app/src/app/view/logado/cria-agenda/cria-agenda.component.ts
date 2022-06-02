@@ -82,7 +82,7 @@ export class CriaAgendaComponent implements OnInit {
       this.horario.updated_at = Date.now().toString();
       this.horario.created_at = Date.now().toString();
       this.horarioService.create(this.horario).subscribe(() => {
-        this.horarioService.showMessage('Agenda criado');
+        this.horarioService.showMessage('Horário criado!');
         this.router.navigate(['/logado/agenda'])
       })
     }
@@ -105,10 +105,10 @@ export class CriaAgendaComponent implements OnInit {
         id: this.horario2.id
 
       }
-      console.log('Horarios: ' + hr.hr_inicio, hr.tg_domingo, hr.tg_segunda)
+
 
       this.horarioService.update(hr).subscribe(() => {
-        this.horarioService.showMessage('Agenda salvo');
+        this.horarioService.showMessage('Horário salvo!');
         this.router.navigate(['/logado/agenda'])
       })
 
