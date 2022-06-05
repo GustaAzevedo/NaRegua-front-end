@@ -17,7 +17,8 @@
 
           <div class="col-12">
             <label class="form-label">Confirmar Senha</label>
-            <input class="form-control" type="password">
+            <input class="form-control" type="password" [required]="password2" [(ngModel)]="password2"
+              name={{password2}}>
           </div>
 
           <div class="col-12 pt-4">

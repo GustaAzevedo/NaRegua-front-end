@@ -1,4 +1,5 @@
-import { Router } from '@angular/router';
+import { User } from './../../../models/User';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BarbeariaService } from './../../../services/barbearia.service';
 import { Barbearia } from './../../../models/Barbearia';
 import { Component, OnInit } from '@angular/core';
@@ -9,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./criar-barbearia.component.scss']
 })
 export class CriarBarbeariaComponent implements OnInit {
-  userId: any = 6;
   img: string = 'https://via.placeholder.com/500x1400';
   barbearias: Barbearia[];
   fisicaOuJuridica: String[] = ['J', 'F'];
   tipoPessoa: String;
+
+  enviadoUser: User;
 
   barbearia: Barbearia = {
     ds_nome: '',
@@ -57,25 +59,28 @@ export class CriarBarbeariaComponent implements OnInit {
     updated_at: null,
     tg_pessoa: '',
   }
-  constructor(private barbeariaService: BarbeariaService, private router: Router) { }
+  constructor(private barbeariaService: BarbeariaService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(params => {
+      this.enviadoUser = params;
+      console.log("ID:  -- " + this.enviadoUser.id + " Email: " + this.enviadoUser.email)
+    })
   }
 
   mudaTipoPessoa(s): any {
     this.tipoPessoa = s;
-    this.barbearia2.user_id = this.userId;
+    this.barbearia2.user_id = this.enviadoUser.id;
   }
 
   salvar(): void {
     this.barbearia2 = this.barbearia;
     this.barbearia2.tg_pessoa = this.tipoPessoa
     console.log(this.barbearia2)
-    this.barbearia2.user_id = this.userId;
+    this.barbearia2.user_id = this.enviadoUser.id;
     this.barbeariaService.criar(this.barbearia2).subscribe(() => {
       this.barbeariaService.showMessage('Barbearia Criada')
-      this.router.navigate(['/logado/dashboard'])
+      this.router.navigate(['/'])
     })
   }
 }
