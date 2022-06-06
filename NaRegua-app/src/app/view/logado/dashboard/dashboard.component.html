@@ -16,10 +16,13 @@
             <div class="card" style="height: 10rem;">
                 <div class="card-body">
                     <div class="col-12 text-center">
-                      <p class="title">Agendamentos Pendentes</p>
+                      <p class="title">Horários Disponíveis para hoje</p>
                     </div>
                     <div class="col-12 text-center py-1">
-                      <p class="card-subtitle number mt-4">{{ qtdPendentes }}</p>
+                      <p class="card-subtitle number mt-4">{{ qtdHorarios }}</p>
+                    </div>
+                    <div class="col-12 text-center py-1">
+                      <p class="data  mt-3">{{ data | date: 'dd/MM/yyyy' }}</p>
                     </div>
                 </div>
             </div>
