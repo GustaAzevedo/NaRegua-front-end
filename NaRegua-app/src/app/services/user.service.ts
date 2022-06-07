@@ -40,9 +40,16 @@ export class UserService {
     return EMPTY
   }
 
-  create(user: User): Observable<User> {
+  create(user: any): Observable<User> {
     console.log(httpOptions)
-    return this.HTTP.post<User>(apiUrlInfoGES + 'user', user).pipe(
+    let a = {
+      email: user.email,
+      name: user.email,
+      password: user.email
+    }
+    console.log(a.password + " name: " + a.name + " password: " + a.password)
+    return this.HTTP.post<User>(apiUrlInfoGES + 'user', a).pipe(
+      catchError((e) => this.errorHandler(e)),
       map((obj) => obj),
     );
   }

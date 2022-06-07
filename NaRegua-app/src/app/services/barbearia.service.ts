@@ -54,7 +54,36 @@ export class BarbeariaService {
   criar(barbearia: Barbearia): Observable<Barbearia> {
     let url = `${apiUrlInfoGES}barbearia`;
 
-    return this.HTTP.post<Barbearia>(url, barbearia, httpOptions).pipe(
+    let a = {
+      ds_razao: barbearia.ds_razao,
+      ds_nome: barbearia.ds_nome,
+      ds_endereco: barbearia.ds_endereco,
+      ds_numero: barbearia.ds_numero,
+      ds_cidade: barbearia.ds_cidade,
+      ds_bairro: barbearia.ds_bairro,
+      ds_cep: barbearia.ds_cep,
+      ds_uf: barbearia.ds_uf,
+      ds_completo: barbearia.ds_completo,
+      tg_pessoa: barbearia.tg_pessoa,
+      ds_cpfcnpj: barbearia.ds_cpfcnpj,
+      ds_email: barbearia.ds_email,
+      ds_celular: barbearia.ds_celular,
+      ds_telefone: barbearia.ds_telefone,
+      user_id: barbearia.user_id,
+      hx_logo: barbearia.hx_logo
+    }
+
+    console.log("Nome: " + barbearia.ds_razao + " nome2: " +
+      barbearia.ds_nome + " Endereco: " + barbearia.ds_endereco +
+      " numero: " + barbearia.ds_numero +
+      " - cidade: " + barbearia.ds_cidade + " bairro: " + barbearia.ds_bairro +
+      " cep: " + barbearia.ds_cep + " ds: " + barbearia.ds_uf + " completo: " +
+      barbearia.ds_completo + " tg_pessoa:" + barbearia.tg_pessoa + " cpf/cnpj: " +
+      barbearia.ds_cpfcnpj + " email:" + barbearia.ds_email + " celular:" +
+      barbearia.ds_celular + " telefone:" + barbearia.ds_telefone +
+      " - id " + barbearia.user_id + " logo: " + barbearia.hx_logo
+    )
+    return this.HTTP.post<Barbearia>(url, a, httpOptions).pipe(
       catchError((e) => this.errorHandler(e)),
       map((obj) => obj),
     );
