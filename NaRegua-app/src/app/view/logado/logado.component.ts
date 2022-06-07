@@ -47,14 +47,18 @@ export class LogadoComponent implements OnInit {
     if (tk.token == null || tk.token == '') {
       this.router.navigate(['../login'])
     }
+
+    if (tk.barbearia_id == null || tk.barbearia_id == '') {
+      this.router.navigate(['../login'])
+    }
+
     this.pegaBarbearia();
   }
 
   pegaBarbearia(): void {
     this.barbeariaService.pegar(this.barbeariaId).subscribe(barbe => {
       this.barbearias = barbe;
-      console.log("barbearia: " + this.barbearias[0].ds_nome)
-      this.barbearia = this.barbearias[0]
+      this.barbearia = this.barbearias[0];
     })
   }
 

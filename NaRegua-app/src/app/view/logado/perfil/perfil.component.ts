@@ -73,7 +73,6 @@ export class PerfilComponent implements OnInit {
   pegaBarbearia(): void {
     this.barbeariaService.pegar(this.barbeariaId).subscribe(barbe => {
       this.barbearias = barbe;
-      console.log("barbearia: " + this.barbearias[0].ds_nome)
       this.barbearia = this.barbearias[0]
       this.tipoPessoa = this.barbearia.tg_pessoa
     })
@@ -85,11 +84,10 @@ export class PerfilComponent implements OnInit {
   salvar(): void {
     this.barbearia2 = this.barbearia;
     this.barbearia2.tg_pessoa = this.tipoPessoa
-    console.log(this.barbearia2)
 
     this.barbeariaService.update(this.barbearia2).subscribe(() => {
-      this.barbeariaService.showMessage('Barbearia salva')
-      this.router.navigate(['/logado'])
+      this.barbeariaService.showMessage('Barbearia salva');
+      location.reload();
     })
   }
 
