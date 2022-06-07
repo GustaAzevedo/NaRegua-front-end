@@ -87,7 +87,7 @@ export class PerfilComponent implements OnInit {
 
     this.barbeariaService.update(this.barbearia2).subscribe(() => {
       this.barbeariaService.showMessage('Barbearia salva');
-      location.reload();
+      this.router.navigate(['/logado'])
     })
   }
 
